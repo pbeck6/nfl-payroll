@@ -1,29 +1,25 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-cs340-project-ui/package-lock.json
-cs340-project-ui/node_modules
-cs340-project-ui/.pnp
-cs340-project-ui/.pnp.js
+package-lock.json
+db-connector.js
+*/node_modules
+.pnp
+.pnp.js
 
 # testing
-cs340-project-ui/coverage
+/coverage
 
 # production
-cs340-project-ui/build
+/build
 
 # misc
-cs340-project-ui/.DS_Store
-cs340-project-ui/.env.local
-cs340-project-ui/.env.development.local
-cs340-project-ui/.env.test.local
-cs340-project-ui/.env.production.local
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-cs340-project-ui/npm-debug.log*
-cs340-project-ui/yarn-debug.log*
-cs340-project-ui/yarn-error.log*
-
-#
-cs340-project-rest/node_modules
-cs340-project-rest/db-connector.js
-cs340-project-rest/package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
