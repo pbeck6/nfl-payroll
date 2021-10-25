@@ -1,4 +1,4 @@
-# cs340-project
+# NFL Payroll
 
 ## For FLIP server, nvm to install Node v16.5.0, and then run React app
 
