@@ -3,7 +3,7 @@
 # dependencies
 package-lock.json
 db-connector.js
-*/node_modules
+**/node_modules
 .pnp
 .pnp.js
 
