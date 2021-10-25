@@ -11,3 +11,6 @@ HOST=flipX.engr.oregonstate.edu
 ```
 
 ## /rest directory is missing a db-connector.js file, identical to the file for Task 1, that specifies the user's MariaDB login credentials
+
+### Misc.
+- /ui/package.json is NOT YET connected to the /rest database with a proxy redirect
