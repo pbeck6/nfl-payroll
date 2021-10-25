@@ -1,2 +1,28 @@
-node_modules
-db-connector.js
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+cs340-project-ui/node_modules
+cs340-project-ui/.pnp
+cs340-project-ui/.pnp.js
+
+# testing
+cs340-project-ui/coverage
+
+# production
+cs340-project-ui/build
+
+# misc
+cs340-project-ui/.DS_Store
+cs340-project-ui/.env.local
+cs340-project-ui/.env.development.local
+cs340-project-ui/.env.test.local
+cs340-project-ui/.env.production.local
+
+cs340-project-ui/npm-debug.log*
+cs340-project-ui/yarn-debug.log*
+cs340-project-ui/yarn-error.log*
+
+#
+cs340-project-rest/node_modules
+cs340-project-rest/db-connector.js
+cs340-project-rest/package-lock.json
