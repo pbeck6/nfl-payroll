@@ -2,6 +2,7 @@
 
 # dependencies
 cs340-project-ui/node_modules
+cs340-project-ui/package-lock.json
 cs340-project-ui/.pnp
 cs340-project-ui/.pnp.js
 
