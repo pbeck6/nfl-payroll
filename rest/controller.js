@@ -1,9 +1,10 @@
 // Express
 const express = require('express');
 const app = express();     
-PORT = 6671;
+
 // Database
 const db = require('./db-connector');
+const PORT = db.port;
 
 app.get('/', function(req, res)
     {   res.send('TEST WORKING');
