@@ -9,7 +9,7 @@ import {useState} from 'react';
 
 
 function App() {
-  const [playerToEdit, setplayerToEdit] = useState();
+  const [playerToEdit, setPlayerToEdit] = useState();
   return (
     <div className="App">
       <Router>
