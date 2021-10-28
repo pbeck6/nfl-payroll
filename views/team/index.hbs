@@ -1,4 +1,4 @@
-<h1>Manage Teams</h1>
+<h1 class='mb-4'>Manage Teams</h1>
     <div id="instructions">
         <p>Page allows you to manage teams including:</p>
         <ul>
@@ -10,15 +10,15 @@
     </div>
 
     <div id="teamtable">
-        <table>
-            <thead>
+        <table class='table'>
+            <thead class='thead-dark'>
                 <tr>
-                    <td>ID</td>
-                    <td>Location</td>
-                    <td>Team Name</td>
-                    <td>Stadium</td>
-                    <td>Salary Cap</td>
-                    <td>Actions</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Team Name</th>
+                    <th scope="col">Stadium</th>
+                    <th scope="col">Salary Cap</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,14 +53,22 @@
     <div id="addteam">
         <p>Add a new team:</p>
         <form>
-            <label for="location">Location:</label>
-            <input type="text" id="location" value="location">
-            <label for="teamname">Team Name:</label>
-            <input type="text" id="teamname" value="teamname">
-            <label for="stadium">Stadium:</label>
-            <input type="text" id="stadium" value="stadium">
-            <label for="salarycap"> Salary Cap:</label>
-            <input type="number" id="salarycap" value="salarycap">
-            <input type="button" id="submit" value="Submit">
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" value="location">
+            </div>
+            <div class="form-group">    
+                <label for="teamname">Team Name:</label>
+                <input type="text" id="teamname" value="teamname">
+            </div>
+            <div class="form-group">
+                <label for="stadium">Stadium:</label>
+                <input type="text" id="stadium" value="stadium">
+            </div>
+            <div class="form-group">
+                <label for="salarycap"> Salary Cap:</label>
+                <input type="number" id="salarycap" value="salarycap">
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
