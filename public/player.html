@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Player</title>
+</head>
+<body>
+    <div id="navlinks">
+        <a href="./index.html">Homepage</a>
+        <a href="./position.html">Manage Positions</a>
+        <a href="./coach.html">Manage Coaches</a>
+        <a href="./team.html">Manage Teams</a>
+    </div>
+    <h1>Manage Players</h1>
+    <div id="instructions"></div>
+        <p>Page allows you to manage your players including:</p>
+        <ul>
+            <li>
+                <p>Adding players to your team</p>
+            </li>
+            <li>
+                <p>Updating players information</p>
+            </li>
+            <li>
+                <p>Removing players from your team</p>
+            </li>
+            <li>
+                <p>Retrieve all players on your team</p>
+            </li>
+        </ul>
+    </div>
+
+    <div id="playertable">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Birthdate</td>
+                    <td>Debut</td>
+                    <td>Jersey Number</td>
+                    <td>Team</td>
+                    <td>Rating</td>
+                    <td>Salary</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Tom Brady</td>
+                    <td>1980-01-01</td>
+                    <td>2000-01-01</td>
+                    <td>12</td>
+                    <td>1</td>
+                    <td>95.0</td>
+                    <td>10000000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Antonio Brown</td>
+                    <td>1990-01-01</td>
+                    <td>2010-01-01</td>
+                    <td>81</td>
+                    <td>1</td>
+                    <td>84.0</td>
+                    <td>5000000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Rob Gronkowski</td>
+                    <td>1988-01-01</td>
+                    <td>2012-01-01</td>
+                    <td>89</td>
+                    <td>1</td>
+                    <td>88.0</td>
+                    <td>7000000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="addplayer">
+        <p>Add a new player:</p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="name">
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" value="birthdate">
+            <label for="debut">Debut:</label>
+            <input type="date" id="debut" value="debut">
+            <label for="number">Jersey Number</label>
+            <input type="number" id="number" value="number">
+            <label for="team">Team</label>
+            <input type="number" id="team" value="team">
+            <label for="rating">Rating</label>
+            <input type="number" id="rating" value="rating">
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" value="salary">
+            <input type="button" id="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
