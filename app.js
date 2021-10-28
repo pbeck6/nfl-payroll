@@ -16,7 +16,7 @@ app.set('view engine', '.hbs');                 // Tell express to use the handl
 
 // Routes
 app.get('/', function(req, res)
-    {   res.render('index');
+    {   res.render('home');
 });
    
 app.listen(PORT, function(){
