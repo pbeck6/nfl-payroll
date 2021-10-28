@@ -1,4 +1,4 @@
- <h1 class='mb-4'>Manage Positions</h1>
+<h1 class='mb-4'>Manage Positions</h1>
     <div id="instructions">
         <p>Page allows you to manage your positions including:</p>
         <ul>
@@ -14,8 +14,22 @@
             <li>
                 <p>Retrieve all positions on your team</p>
             </li>
+            <li>
+                <p>Managing PositionPlayer M:M relationship</p>
+            </li>
+            <li>
+                <p>Managing PositionCoach M:M relationship</p>
+            </li>
         </ul>
     </div>
+
+    <div id="tablepositionfilter">
+        <label for="teamgroup">Search positions by group: (Offense, Defense, Special Teams) </label>
+        <input type="text" id="teamgroup">
+        <button type="submit" class="btn btn-primary">Submit Query</button>
+        <button type="submut" class="btn btn-primary">Reset</button>
+    </div>
+
     <div id="positiontable">
         <table class='table'>
             <thead class='thead-dark'>
@@ -62,4 +76,79 @@
             </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+    </div>
+
+    <div id="tablepositionplayerfilter">
+        <p>Submit a query to filter by position:</p>
+        <select name="positionfilter" id="positionfilter-ajax">
+            <option value="">Select a Position</option>
+            <option value="1">Quarterback</option>
+            <option value="2">Tight End</option>
+            <option value="3">Wide Reciever</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Submit Query</button>
+        <button type="submit" class="btn btn-primary">Reset</button>
+    </div>
+
+    
+    <div id="positionplayertable">
+        <table class='table'>
+            <thead class='thead-dark'>
+                <tr>
+                    <th scope="col">Player ID</th>
+                    <th scope="col">Position ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tablepositioncoachfilter">
+        <p>Submit a query to filter by position:</p>
+        <select name="positionfilter" id="positionfilter-ajax">
+            <option value="">Select a Position</option>
+            <option value="1">Quarterback</option>
+            <option value="2">Tight End</option>
+            <option value="3">Wide Reciever</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Submit Query</button>
+        <button type="submit" class="btn btn-primary">Reset</button>
+    </div>
+
+    <div id="positioncoachtable">
+        <table class='table'>
+            <thead class='thead-dark'>
+                <tr>
+                    <th scope="col">Position ID</th>
+                    <th scope="col">Coach ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
