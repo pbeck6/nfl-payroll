@@ -1,0 +1,66 @@
+    <h1>Manage Teams</h1>
+    <div id="instructions">
+        <p>Page allows you to manage teams including:</p>
+        <ul>
+            <li>Add a new team</li>
+            <li>Edit a team's information</li>
+            <li>Remove a team</li>
+            <li>Retrieve all teams in the league</li>
+        </ul>
+    </div>
+
+    <div id="teamtable">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Location</td>
+                    <td>Team Name</td>
+                    <td>Stadium</td>
+                    <td>Salary Cap</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Tampa Bay</td>
+                    <td>Buccaneers</td>
+                    <td>Raymond James Stadium</td>
+                    <td>208200000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>New England</td>
+                    <td>Patriots</td>
+                    <td>Gillette Stadium</td>
+                    <td>208200000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Los Angeles</td>
+                    <td>Ramss</td>
+                    <td>Sofi Stadium</td>
+                    <td>208200000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="addteam">
+        <p>Add a new team:</p>
+        <form>
+            <label for="location">Location:</label>
+            <input type="text" id="location" value="location">
+            <label for="teamname">Team Name:</label>
+            <input type="text" id="teamname" value="teamname">
+            <label for="stadium">Stadium:</label>
+            <input type="text" id="stadium" value="stadium">
+            <label for="salarycap"> Salary Cap:</label>
+            <input type="number" id="salarycap" value="salarycap">
+            <input type="button" id="submit" value="Submit">
+        </form>
+    </div>

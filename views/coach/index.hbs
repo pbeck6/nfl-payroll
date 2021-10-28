@@ -1,0 +1,80 @@
+<h1>Manage Coaches</h1>
+    <div id="instructions"></div>
+        <p>Page allows you to manage your coaches including:</p>
+        <ul>
+            <li>
+                <p>Adding coaches to your team</p>
+            </li>
+            <li>
+                <p>Updating coaches information</p>
+            </li>
+            <li>
+                <p>Removing coaches from your team</p>
+            </li>
+            <li>
+                <p>Retrieve all coaches on your team</p>
+            </li>
+        </ul>
+    </div>
+
+    <div id="coachtable">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Coach Type</td>
+                    <td>Team ID</td>
+                    <td>Rating</td>
+                    <td>Salary</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Josh McDaniels</td>
+                    <td>QB Coach</td>
+                    <td>2</td>
+                    <td>95.0</td>
+                    <td>20000000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Troy Brown</td>
+                    <td>WR Coach</td>
+                    <td>2</td>
+                    <td>84.0</td>
+                    <td>2000000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Nick Caley</td>
+                    <td>TE Coach</td>
+                    <td>2</td>
+                    <td>78.0</td>
+                    <td>1000000</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="addcoach">
+        <p>Add a new coach:</p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="name">
+            <label for="type">Coach Type:</label>
+            <input type="text" id="type" value="type">
+            <label for="team">Team</label>
+            <input type="number" id="team" value="team">
+            <label for="rating">Rating</label>
+            <input type="number" id="rating" value="rating">
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" value="salary">
+            <input type="button" id="submit" value="Submit">
+        </form>
+    </div>

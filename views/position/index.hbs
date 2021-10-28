@@ -1,0 +1,61 @@
+ <h1>Manage Positions</h1>
+    <div id="instructions"></div>
+        <p>Page allows you to manage your positions including:</p>
+        <ul>
+            <li>
+                <p>Adding positions to your team</p>
+            </li>
+            <li>
+                <p>Updating position information</p>
+            </li>
+            <li>
+                <p>Removing positions from your team</p>
+            </li>
+            <li>
+                <p>Retrieve all positions on your team</p>
+            </li>
+        </ul>
+    </div>
+    <div id="positiontable">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Position Name</td>
+                    <td>Team Group</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Quarterback</td>
+                    <td>Offense</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Tight End</td>
+                    <td>Offense</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Wide Reciever</td>
+                    <td>Offense</td>
+                    <td><button>Edit</button><button>Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="addposition">
+        <p>Add a new position:</p>
+        <form>
+            <label for="positionname">Position Name:</label>
+            <input type="text" id="positionname" value="positionname">
+            <label for="group">Team Group:</label>
+            <input type="text" id="group" value="group">
+            <input type="button" id="submit" value="Submit">
+        </form>
+    </div>
