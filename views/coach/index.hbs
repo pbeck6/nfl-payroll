@@ -1,5 +1,5 @@
-<h1>Manage Coaches</h1>
-    <div id="instructions"></div>
+<h1 class='mb-4'>Manage Coaches</h1>
+    <div id="instructions">
         <p>Page allows you to manage your coaches including:</p>
         <ul>
             <li>
@@ -18,16 +18,16 @@
     </div>
 
     <div id="coachtable">
-        <table>
-            <thead>
+        <table class="table">
+            <thead class='thead-dark'>
                 <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Coach Type</td>
-                    <td>Team ID</td>
-                    <td>Rating</td>
-                    <td>Salary</td>
-                    <td>Actions</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Coach Type</th>
+                    <th scope="col">Team ID</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,16 +65,25 @@
     <div id="addcoach">
         <p>Add a new coach:</p>
         <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" value="name">
-            <label for="type">Coach Type:</label>
-            <input type="text" id="type" value="type">
-            <label for="team">Team</label>
-            <input type="number" id="team" value="team">
-            <label for="rating">Rating</label>
-            <input type="number" id="rating" value="rating">
-            <label for="salary">Salary</label>
-            <input type="number" id="salary" value="salary">
-            <input type="button" id="submit" value="Submit">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-group">
+                <label for="type">Coach Type:</label>
+                <input type="text" id="type">
+            <div class="form-group">
+                <label for="team">Team</label>
+                <input type="number" id="team">
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="number" id="rating">
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="number" id="salary">
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
