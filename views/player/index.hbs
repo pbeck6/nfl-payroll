@@ -1,4 +1,4 @@
-    <h1>Manage Players</h1>
+<h1 class='mb-4'>Manage Players</h1>
     <div id="instructions">
         <p>Page allows you to manage your players including:</p>
         <ul>
@@ -18,18 +18,18 @@
     </div>
 
     <div id="playertable">
-        <table>
-            <thead>
+        <table class='table'>
+            <thead class='thead-dark'>
                 <tr>
-                    <td>ID</td>
-                    <td>Name</td>
-                    <td>Birthdate</td>
-                    <td>Debut</td>
-                    <td>Jersey Number</td>
-                    <td>Team</td>
-                    <td>Rating</td>
-                    <td>Salary</td>
-                    <td>Actions</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Birthdate</th>
+                    <th scope="col">Debut</th>
+                    <th scope="col">Jersey #</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,20 +73,34 @@
     <div id="addplayer">
         <p>Add a new player:</p>
         <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" value="name">
-            <label for="birthdate">Birthdate:</label>
-            <input type="date" id="birthdate" value="birthdate">
-            <label for="debut">Debut:</label>
-            <input type="date" id="debut" value="debut">
-            <label for="number">Jersey Number</label>
-            <input type="number" id="number" value="number">
-            <label for="team">Team</label>
-            <input type="number" id="team" value="team">
-            <label for="rating">Rating</label>
-            <input type="number" id="rating" value="rating">
-            <label for="salary">Salary</label>
-            <input type="number" id="salary" value="salary">
-            <input type="button" id="submit" value="Submit">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" id="birthdate">
+            </div>
+            <div class="form-group">
+                <label for="debut">Debut:</label>
+                <input type="date" id="debut">
+            </div>
+            <div class="form-group">
+                <label for="number">Jersey Number</label>
+                <input type="number" id="number">
+            </div>
+            <div class="form-group">
+                <label for="team">Team</label>
+                <input type="number" id="team">
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <input type="number" id="rating">
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="number" id="salary">
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

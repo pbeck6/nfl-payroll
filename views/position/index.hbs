@@ -1,4 +1,4 @@
- <h1>Manage Positions</h1>
+ <h1 class='mb-4'>Manage Positions</h1>
     <div id="instructions">
         <p>Page allows you to manage your positions including:</p>
         <ul>
@@ -17,13 +17,13 @@
         </ul>
     </div>
     <div id="positiontable">
-        <table>
+        <table class='table'>
             <thead>
                 <tr>
-                    <td>ID</td>
-                    <td>Position Name</td>
-                    <td>Team Group</td>
-                    <td>Actions</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">Position Name</th>
+                    <th scope="col">Team Group</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -52,10 +52,14 @@
     <div id="addposition">
         <p>Add a new position:</p>
         <form>
-            <label for="positionname">Position Name:</label>
-            <input type="text" id="positionname" value="positionname">
-            <label for="group">Team Group:</label>
-            <input type="text" id="group" value="group">
-            <input type="button" id="submit" value="Submit">
+            <div class="form-group">
+                <label for="positionname">Position Name:</label>
+                <input type="text" id="positionname" value="positionname">
+            </div>
+            <div class="form-group">
+                <label for="group">Team Group:</label>
+                <input type="text" id="group" value="group">
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
