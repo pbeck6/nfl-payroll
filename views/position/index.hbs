@@ -2,24 +2,12 @@
     <div id="instructions">
         <p>Page allows you to manage your positions including:</p>
         <ul>
-            <li>
-                <p>Adding positions to your team</p>
-            </li>
-            <li>
-                <p>Updating position information</p>
-            </li>
-            <li>
-                <p>Removing positions from your team</p>
-            </li>
-            <li>
-                <p>Retrieve all positions on your team</p>
-            </li>
-            <li>
-                <p>Managing PositionPlayer M:M relationship</p>
-            </li>
-            <li>
-                <p>Managing PositionCoach M:M relationship</p>
-            </li>
+            <li>Adding positions to your team</li>
+            <li>Updating position information</li>
+            <li>Removing positions from your team</li>
+            <li>Retrieve all positions on your team</li>
+            <li>Managing PositionPlayer M:M relationship</li>
+            <li>Managing PositionCoach M:M relationship</li>
         </ul>
     </div>
 
@@ -27,7 +15,7 @@
         <label for="teamgroup">Search positions by group: (Offense, Defense, Special Teams) </label>
         <input type="text" id="teamgroup">
         <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submut" class="btn btn-primary">Reset</button>
+        <button type="submut" class="btn btn-info">Reset</button>
     </div>
 
     <div id="positiontable">
@@ -80,14 +68,14 @@
 
     <div id="tablepositionplayerfilter">
         <p>Submit a query to filter by position:</p>
-        <select name="positionfilter" id="positionfilter-ajax">
+        <select class="form-select" name="positionfilter" id="positionfilter-ajax">
             <option value="">Select a Position</option>
             <option value="1">Quarterback</option>
             <option value="2">Tight End</option>
             <option value="3">Wide Reciever</option>
         </select>
         <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submit" class="btn btn-primary">Reset</button>
+        <button type="submit" class="btn btn-info">Reset</button>
     </div>
 
     
@@ -103,29 +91,49 @@
                 <tr>
                     <td>1</td>
                     <td>1</td>
+                    <td><button>Edit</button><button>Delete</button></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>3</td>
+                    <td><button>Edit</button><button>Delete</button></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>2</td>
+                    <td><button>Edit</button><button>Delete</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
 
+    <div id="addpositionplayer">
+        <p>Add a new position for player:</p>
+        <form>
+            <div class="form-group">
+                <label for="positionname">Position Name:</label>
+                <input type="text" id="positionname" value="positionname">
+            </div>
+            <div class="form-group"> 
+                <label for="group">Player Name:</label>
+                <input type="text" id="group" value="group">
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+
+
     <div id="tablepositioncoachfilter">
         <p>Submit a query to filter by position:</p>
-        <select name="positionfilter" id="positionfilter-ajax">
+        <select class="form-select" name="positionfilter" id="positionfilter-ajax">
             <option value="">Select a Position</option>
             <option value="1">Quarterback</option>
             <option value="2">Tight End</option>
             <option value="3">Wide Reciever</option>
         </select>
         <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submit" class="btn btn-primary">Reset</button>
+        <button type="submit" class="btn btn-info">Reset</button>
     </div>
 
     <div id="positioncoachtable">
@@ -140,14 +148,17 @@
                 <tr>
                     <td>1</td>
                     <td>1</td>
+                    <td><button>Edit</button><button>Delete</button></td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>3</td>
+                    <td><button>Edit</button><button>Delete</button></td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>2</td>
+                    <td><button>Edit</button><button>Delete</button></td>
                 </tr>
             </tbody>
         </table>
