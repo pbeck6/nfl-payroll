@@ -1,24 +1,24 @@
 <h1 class='mb-4'>Manage Positions</h1>
-    <div id="instructions">
+    <div id="instructions" class='mb-4'>
         <p>Page allows you to manage your positions including:</p>
-        <ul>
-            <li>Adding positions to your team</li>
-            <li>Updating position information</li>
-            <li>Removing positions from your team</li>
-            <li>Retrieve all positions on your team</li>
-            <li>Managing PositionPlayer M:M relationship</li>
-            <li>Managing PositionCoach M:M relationship</li>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Adding positions to your team</li>
+            <li class="list-group-item">Updating position information</li>
+            <li class="list-group-item">Removing positions from your team</li>
+            <li class="list-group-item">Retrieve all positions on your team</li>
+            <li class="list-group-item">Managing PositionPlayer M:M relationship</li>
+            <li class="list-group-item">Managing PositionCoach M:M relationship</li>
         </ul>
     </div>
 
-    <div id="tablepositionfilter">
+    <div id="tablepositionfilter" class='mt-3 mb-1'>
         <label for="teamgroup">Search positions by group: (Offense, Defense, Special Teams) </label>
         <input type="text" id="teamgroup">
         <button type="submit" class="btn btn-primary">Submit Query</button>
         <button type="submut" class="btn btn-info">Reset</button>
     </div>
 
-    <div id="positiontable">
+    <div id="positiontable" class='mb-4'>
         <table class='table'>
             <thead class='thead-dark'>
                 <tr>
@@ -33,25 +33,34 @@
                     <td>1</td>
                     <td>Quarterback</td>
                     <td>Offense</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>Tight End</td>
                     <td>Offense</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>Wide Reciever</td>
                     <td>Offense</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div id="addposition">
+    <div id="addposition" class='mb-4'>
         <p>Add a new position:</p>
         <form>
             <div class="form-group">
@@ -66,7 +75,10 @@
         </form>
     </div>
 
-    <div id="tablepositionplayerfilter">
+    <hr class='border border-primary'></hr>
+    <h2 class='mb-1'>PositionPlayer</h2>
+
+    <div id="tablepositionplayerfilter" class='mt-3 mb-1'>
         <p>Submit a query to filter by position:</p>
         <select class="form-select" name="positionfilter" id="positionfilter-ajax">
             <option value="">Select a Position</option>
@@ -78,36 +90,45 @@
         <button type="submit" class="btn btn-info">Reset</button>
     </div>
 
-    
-    <div id="positionplayertable">
+    <div id="positionplayertable" class='mb-4'>
         <table class='table'>
             <thead class='thead-dark'>
                 <tr>
                     <th scope="col">Player ID</th>
                     <th scope="col">Position ID</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
                     <td>1</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>3</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>2</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div id="addpositionplayer">
+    <div id="addpositionplayer" class='mb-4'>
         <p>Add a new position for player:</p>
         <form>
             {{!-- REMINDER: REPLACE TEXT INPUT WITH SELECT INPUT --}}
@@ -123,9 +144,10 @@
         </form>
     </div>
 
+    <hr class='border border-primary'></hr>
+        <h2 class='mb-1'>PositionCoach</h2>
 
-
-    <div id="tablepositioncoachfilter">
+    <div id="tablepositioncoachfilter" class='mt-3 mb-1'>
         <p>Submit a query to filter by position:</p>
         <select class="form-select" name="positionfilter" id="positionfilter-ajax">
             <option value="">Select a Position</option>
@@ -137,35 +159,45 @@
         <button type="submit" class="btn btn-info">Reset</button>
     </div>
 
-    <div id="positioncoachtable">
+    <div id="positioncoachtable" class='mb-4'>
         <table class='table'>
             <thead class='thead-dark'>
                 <tr>
                     <th scope="col">Position ID</th>
                     <th scope="col">Coach ID</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
                     <td>1</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>2</td>
                     <td>3</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>3</td>
                     <td>2</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div id="addpositioncoach">
+    <div id="addpositioncoach" class='mb-4'>
         <p>Add a new position for coach:</p>
         <form>
             {{!-- REMINDER: REPLACE TEXT INPUT WITH SELECT INPUT --}}

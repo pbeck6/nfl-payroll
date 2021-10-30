@@ -4,7 +4,7 @@ const app = express();
 
 // Database -> Gets credential from local db-connector file, not included in repo
 const db = require('./db-connector');
-const PORT = db.port;
+const PORT = db.port;  // CURRENTLY RUNNING "FOREVER" ON PORT 7270
 
 // Hnadlebars -> For displaying database results into HTML pages
 var exphbs = require('express-handlebars');     // Import express-handlebars

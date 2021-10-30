@@ -1,15 +1,15 @@
 <h1 class='mb-4'>Manage Teams</h1>
-    <div id="instructions">
+    <div id="instructions" class='mb-4'>
         <p>Page allows you to manage teams including:</p>
-        <ul>
-            <li>Add a new team</li>
-            <li>Edit a team's information</li>
-            <li>Remove a team</li>
-            <li>Retrieve all teams in the league</li>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Add a new team</li>
+            <li class="list-group-item">Edit a team's information</li>
+            <li class="list-group-item">Remove a team</li>
+            <li class="list-group-item">Retrieve all teams in the league</li>
         </ul>
     </div>
 
-    <div id="tableteamfilter">
+    <div id="tableteamfilter" class='mt-3 mb-1'>
         {{!-- REMINDER: REPLACE TEXT INPUT WITH SELECT INPUT --}}
         <label for="location">Search teams by location: </label>
         <input type="text" id="location">
@@ -17,7 +17,7 @@
         <button type="submut" class="btn btn-info">Reset</button>
     </div>
 
-    <div id="teamtable">
+    <div id="teamtable" class='mb-4'>
         <table class='table'>
             <thead class='thead-dark'>
                 <tr>
@@ -36,7 +36,10 @@
                     <td>Buccaneers</td>
                     <td>Raymond James Stadium</td>
                     <td>208200000</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -44,7 +47,10 @@
                     <td>Patriots</td>
                     <td>Gillette Stadium</td>
                     <td>208200000</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -52,13 +58,16 @@
                     <td>Ramss</td>
                     <td>Sofi Stadium</td>
                     <td>208200000</td>
-                    <td><button>Edit</button><button>Delete</button></td>
+                    <td>
+                        <button class="btn btn-warning">Edit</button>
+                        <button class="btn btn-danger">Delete</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div id="addteam">
+    <div id="addteam" class='mb-4'>
         <p>Add a new team:</p>
         <form>
             <div class="form-group">
