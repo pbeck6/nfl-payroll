@@ -7,7 +7,7 @@ const db = require('./db-connector');
 const PORT = db.port;  // CURRENTLY RUNNING "FOREVER" ON PORT 7270
 
 // Hnadlebars -> For displaying database results into HTML pages
-var exphbs = require('express-handlebars');     // Import express-handlebars
+const exphbs = require('express-handlebars');     // Import express-handlebars
 app.engine('.hbs', exphbs({                     // Create an instance of the handlebars engine to process templates
     extname: ".hbs"
 }));
