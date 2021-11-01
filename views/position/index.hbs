@@ -29,33 +29,17 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each posRows}}
                 <tr>
-                    <td>1</td>
-                    <td>Quarterback</td>
-                    <td>Offense</td>
+                    <td>{{this.positionId}}</td>
+                    <td>{{this.positionName}}</td>
+                    <td>{{this.teamGroup}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Tight End</td>
-                    <td>Offense</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Wide Reciever</td>
-                    <td>Offense</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
@@ -100,30 +84,16 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each posPlayRows}}
                 <tr>
-                    <td>1</td>
-                    <td>1</td>
+                    <td>{{this.playerId}}</td>
+                    <td>{{this.positionId}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
@@ -169,30 +139,16 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each posCoachRows}}
                 <tr>
-                    <td>1</td>
-                    <td>1</td>
+                    <td>{{this.positionId}}</td>
+                    <td>{{this.coachId}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>2</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>

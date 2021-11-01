@@ -33,48 +33,22 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each rows}}
                 <tr>
-                    <td>1</td>
-                    <td>Tom Brady</td>
-                    <td>1980-01-01</td>
-                    <td>2000-01-01</td>
-                    <td>12</td>
-                    <td>1</td>
-                    <td>95.0</td>
-                    <td>10000000</td>
+                    <td>{{this.playerId}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{moment this.birthdate format="MM-DD-YYYY"}}</td>
+                    <td>{{moment this.debut format="MM-DD-YYYY"}}</td>
+                    <td>{{this.number}}</td>
+                    <td>{{this.teamId}}</td>
+                    <td>{{this.rating}}</td>
+                    <td>{{this.salary}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Antonio Brown</td>
-                    <td>1990-01-01</td>
-                    <td>2010-01-01</td>
-                    <td>81</td>
-                    <td>1</td>
-                    <td>84.0</td>
-                    <td>5000000</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Rob Gronkowski</td>
-                    <td>1988-01-01</td>
-                    <td>2012-01-01</td>
-                    <td>89</td>
-                    <td>1</td>
-                    <td>88.0</td>
-                    <td>7000000</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
@@ -100,7 +74,7 @@
             </div>
             <div class="form-group">
                 <label for="team">Team</label>
-                <input type="number" id="team">
+                <input type="number" id="teamId">
             </div>
             <div class="form-group">
                 <label for="rating">Rating</label>

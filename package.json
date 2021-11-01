@@ -12,6 +12,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
     "forever": "^4.0.1",
+    "handlebars-helpers": "^0.10.0",
     "mysql": "^2.18.1"
   }
 }

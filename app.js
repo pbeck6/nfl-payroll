@@ -8,10 +8,13 @@ const PORT = port;  // CURRENTLY RUNNING "FOREVER" ON PORT 7270
 
 // Hnadlebars -> For displaying database results into HTML pages
 const exphbs = require('express-handlebars');     // Import express-handlebars
+const helpers = require('handlebars-helpers')();  // Need helpers for formatting dates
 app.engine('.hbs', exphbs({                     // Create an instance of the handlebars engine to process templates
     extname: ".hbs"
 }));
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
+
+
 
 // Home Route
 app.get('/', function(req, res)
@@ -19,18 +22,28 @@ app.get('/', function(req, res)
 });
 
 // Player Routes
-app.get('/player', function(req, res)
-    {   res.render('player/index');
+app.get('/player', async function(req, res)
+    {   const playerGet = 'SELECT * FROM player';
+        rows = await pool.query(playerGet);
+        res.render('player/index', { rows });
 });
 
 // Team Routes
-app.get('/team', function(req, res)
-    {   res.render('team/index');
+app.get('/team', async function(req, res)
+    {   const teamGet = 'SELECT * FROM team';
+        rows = await pool.query(teamGet);
+        res.render('team/index', { rows });
 });
 
 // Position Routes
-app.get('/position', function(req, res)
-    {   res.render('position/index');
+app.get('/position', async function(req, res)
+    {   const posGet = 'SELECT * FROM `position`';
+        const posPlayGet = 'SELECT * FROM positionplayer';
+        const posCoachGet = 'SELECT * FROM positioncoach';
+        posRows = await pool.query(posGet);
+        posPlayRows = await pool.query(posPlayGet);
+        posCoachRows = await pool.query(posCoachGet);
+        res.render('position/index', { posRows, posPlayRows, posCoachRows });
 });
 
 // Coach Routes

@@ -30,39 +30,19 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each rows}}
                 <tr>
-                    <td>1</td>
-                    <td>Tampa Bay</td>
-                    <td>Buccaneers</td>
-                    <td>Raymond James Stadium</td>
-                    <td>208200000</td>
+                    <td>{{this.teamId}}</td>
+                    <td>{{this.locationName}}</td>
+                    <td>{{this.teamName}}</td>
+                    <td>{{this.stadium}}</td>
+                    <td>{{this.salaryCap}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>New England</td>
-                    <td>Patriots</td>
-                    <td>Gillette Stadium</td>
-                    <td>208200000</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Los Angeles</td>
-                    <td>Ramss</td>
-                    <td>Sofi Stadium</td>
-                    <td>208200000</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
