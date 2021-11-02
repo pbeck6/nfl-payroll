@@ -1,6 +1,6 @@
 # NFL Payroll
 
-## - **Latest:** 
+## - Latest notes
 Need to copy over db-template.js and remake db-connector.js file. Need to run 'npm install' again to install 'handlebars-helper' module.
 
 ## - How to run
