@@ -1,7 +1,13 @@
 # NFL Payroll
 
-## - When working on FLIP server, need to use nvm to update Node to latest version, or at least v16.5.0.
+## - Latest notes
+- Need to copy over db-template.js to local machine and remake db-connector.js file.
+- Need to run 'npm install' again to install 'handlebars-helper' module.
+- Route for '/coach' needs SELECT functionality, by editing app.js and views/coach/index.hbs
 
-## - app.js needs a db-connector.js file; make a copy of db-template.js, fill in credentials, and rename to db-connector.js. gitignore will ensure credentials are not uploaded to the shared repo on push.
+## - How to run
+- When working on FLIP server, need to use nvm to update Node to latest version, or at least v16.5.0.
 
-## - mySQL does not like us using the name position, as it appears to be a reserved word. Must use back-ticks around \`position\` otherwise mySQL will throw a fit.
+- app.js needs a db-connector.js file; make a copy of db-template.js, fill in credentials, and rename to db-connector.js. gitignore will ensure credentials are not uploaded to the shared repo on push.
+
+- The name "position" is a reserved word in mariaDB. Must use back-ticks around \`position\` in any query; otherwise mySQL will throw error.
