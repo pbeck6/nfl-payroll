@@ -1,7 +1,8 @@
 # NFL Payroll
 
 ## - Latest notes
-Need to copy over db-template.js and remake db-connector.js file. Need to run 'npm install' again to install 'handlebars-helper' module.
+- Need to copy over db-template.js and remake db-connector.js file.
+- Need to run 'npm install' again to install 'handlebars-helper' module.
 
 ## - How to run
 - When working on FLIP server, need to use nvm to update Node to latest version, or at least v16.5.0.
