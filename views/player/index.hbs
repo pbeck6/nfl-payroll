@@ -37,10 +37,22 @@
                 <tr>
                     <td>{{this.playerId}}</td>
                     <td>{{this.name}}</td>
+                    {{#if this.birthdate}}
                     <td>{{moment this.birthdate format="MM-DD-YYYY"}}</td>
+                    {{else}}
+                    <td>NULL</td>
+                    {{/if}}
+                    {{#if this.debut}}
                     <td>{{moment this.debut format="MM-DD-YYYY"}}</td>
+                    {{else}}
+                    <td>NULL</td>
+                    {{/if}}
                     <td>{{this.number}}</td>
+                    {{#if this.teamId}}
                     <td>{{this.teamId}}</td>
+                    {{else}}
+                    <td>NULL</td>
+                    {{/if}}
                     <td>{{this.rating}}</td>
                     <td>{{this.salary}}</td>
                     <td>
