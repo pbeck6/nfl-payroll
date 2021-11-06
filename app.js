@@ -1,3 +1,5 @@
+// Run 'forever' module using command ./node_modules/forever/bin/forever start app.js XXXX
+
 // Express
 const express = require('express');
 const app = express();     
