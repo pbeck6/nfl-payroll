@@ -48,7 +48,9 @@ app.get('/position', async function(req, res)
 
 // Coach Routes
 app.get('/coach', function(req, res)
-    {   res.render('coach/index');
+    {   const coachGet = 'SELECT * FROM coach';
+        rows = await pool.query(coachGet);
+        res.render('coach/index');
 });
    
 // Listener

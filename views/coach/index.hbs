@@ -31,42 +31,24 @@
                 </tr>
             </thead>
             <tbody>
+                {{#each rows}}
                 <tr>
-                    <td>1</td>
-                    <td>Josh McDaniels</td>
-                    <td>QB Coach</td>
-                    <td>2</td>
-                    <td>95.0</td>
-                    <td>20000000</td>
+                    <td>{{this.coachId}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.coachType}}</td>
+                    {{#if this.teamId}}
+                    <td>{{this.teamId}}</td>
+                    {{else}}
+                    <td>NULL</td>
+                    {{/if}}
+                    <td>{{this.rating}}</td>
+                    <td>{{this.salary}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Troy Brown</td>
-                    <td>WR Coach</td>
-                    <td>2</td>
-                    <td>84.0</td>
-                    <td>2000000</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Nick Caley</td>
-                    <td>TE Coach</td>
-                    <td>2</td>
-                    <td>78.0</td>
-                    <td>1000000</td>
-                    <td>
-                        <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
-                    </td>
-                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
