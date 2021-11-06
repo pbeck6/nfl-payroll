@@ -6,7 +6,7 @@ const { pool } = require('./db-connector');
 (async () => {
     try { 
         await pool.query('DROP TABLE IF EXISTS positionplayer, positioncoach');
-        await pool.query('DROP TABLE IF EXISTS player, coach, position');
+        await pool.query('DROP TABLE IF EXISTS player, coach, `position`');
 
         await pool.query('CREATE OR REPLACE TABLE team (teamId INT UNSIGNED NOT NULL AUTO_INCREMENT, locationName VARCHAR(255) NOT NULL, teamName VARCHAR(255) NOT NULL, stadium VARCHAR(255) DEFAULT "", salaryCap INT DEFAULT 10000000, PRIMARY KEY (teamId)) ENGINE = InnoDB');
         await pool.query('INSERT INTO team VALUES (NULL, "Chicago", "Bears", "Soldier Field", 70000000)');
