@@ -11,11 +11,11 @@ const { pool } = require('./db-connector');
         await pool.query('CREATE OR REPLACE TABLE team (teamId INT UNSIGNED NOT NULL AUTO_INCREMENT, locationName VARCHAR(255) NOT NULL, teamName VARCHAR(255) NOT NULL, stadium VARCHAR(255) DEFAULT "", salaryCap INT DEFAULT 10000000, PRIMARY KEY (teamId)) ENGINE = InnoDB');
         await pool.query('INSERT INTO team VALUES (NULL, "Chicago", "Bears", "Soldier Field", 70000000)');
         
-        await pool.query('CREATE TABLE player (playerId INT UNSIGNED NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, birthdate DATE NULL, debut DATE NULL, number INT DEFAULT 0, teamId INT UNSIGNED NULL, rating FLOAT DEFAULT 0, salary INT DEFAULT 0, FOREIGN KEY (teamId) REFERENCES team (teamId) ON DELETE SET NULL ON UPDATE CASCADE, PRIMARY KEY (playerId)) ENGINE = InnoDB');
+        await pool.query('CREATE TABLE player (playerId INT UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(255) NOT NULL, birthdate DATE NULL, debut DATE NULL, `number` INT DEFAULT 0, teamId INT UNSIGNED NULL, rating FLOAT DEFAULT 0, salary INT DEFAULT 0, FOREIGN KEY (teamId) REFERENCES team (teamId) ON DELETE SET NULL ON UPDATE CASCADE, PRIMARY KEY (playerId)) ENGINE = InnoDB');
         await pool.query('INSERT INTO player VALUES (NULL, "Dick Butkus", "1942-12-09", "1965-09-01", 51, 1, 5.0, 5000000)');
         await pool.query('INSERT INTO player VALUES (NULL, "Dick Butkus Jr.", "1972-12-09", NULL, 55, NULL, 5.0, 2000000)');
         
-        await pool.query('CREATE TABLE coach (coachId INT UNSIGNED NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, coachType VARCHAR(255) DEFAULT "", teamId INT UNSIGNED NULL, rating FLOAT DEFAULT 0, salary INT DEFAULT 0, FOREIGN KEY (teamId) REFERENCES team (teamId) ON DELETE SET NULL ON UPDATE CASCADE, PRIMARY KEY (coachId)) ENGINE = InnoDB');
+        await pool.query('CREATE TABLE coach (coachId INT UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(255) NOT NULL, coachType VARCHAR(255) DEFAULT "", teamId INT UNSIGNED NULL, rating FLOAT DEFAULT 0, salary INT DEFAULT 0, FOREIGN KEY (teamId) REFERENCES team (teamId) ON DELETE SET NULL ON UPDATE CASCADE, PRIMARY KEY (coachId)) ENGINE = InnoDB');
         await pool.query('INSERT INTO coach VALUES (NULL, "George Halas", "Head Coach", 1, 5.0, 20000000)');
         await pool.query('INSERT INTO coach VALUES (NULL, "Heorge Galas", "Assistant Coach", NULL, 2.0, 1000)');
 
