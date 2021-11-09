@@ -1,7 +1,6 @@
 # NFL Payroll
 
 ## - Latest notes
-- Need to copy over db-template.js to local machine and remake db-connector.js file.
 - Need to run 'npm install' again to install 'handlebars-helper' and 'method-override' module.
 - Routes for '/player' now have CREATE and DELETE functionality
 
