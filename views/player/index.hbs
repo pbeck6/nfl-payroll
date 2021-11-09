@@ -57,7 +57,9 @@
                     <td>{{this.salary}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <form class='d-inline' action='/player/{{this.playerId}}?_method=DELETE' method='POST'>
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 {{/each}}

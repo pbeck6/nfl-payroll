@@ -3,8 +3,10 @@
 // Express
 const express = require('express');
 const app = express();
+const methodOverride = require('method-override'); // Used to handle non-GET/POST requests such as DELETE
 app.use(express.json());  // Handle input JSON data from forms
 app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 // Database -> Gets credential from local db-connector file, not included in repo
 const { port, pool } = require('./db-connector');
@@ -55,6 +57,17 @@ app.post('/player', async function(req, res) // Add new player
         const addPlayer = `INSERT INTO player VALUES (NULL, '${data.name}', ${data.birthdate}, ${data.debut}, '${data.number}', ${data.teamId}, '${data.rating}', '${data.salary}')`;
         try {
             await pool.query(addPlayer);
+        } catch (err) {
+            res.send(err);    
+        };
+        res.redirect('/player');
+});
+
+app.delete('/player/:playerId', async function(req, res) // Delete existing player
+    {   let { playerId } = req.params;
+        const deletePlayer = `DELETE FROM player WHERE playerId=${playerId}`;
+        try {
+            await pool.query(deletePlayer);
         } catch (err) {
             res.send(err);    
         };
