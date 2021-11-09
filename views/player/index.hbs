@@ -67,35 +67,35 @@
 
     <div id="addplayer" class='mb-4'>
         <p>Add a new player:</p>
-        <form>
+        <form action='/player' method='POST'>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name">
+                <input type="text" id="name" name="name">
             </div>
             <div class="form-group">
                 <label for="birthdate">Birthdate:</label>
-                <input type="date" id="birthdate">
+                <input type="date" id="birthdate" name="birthdate">
             </div>
             <div class="form-group">
                 <label for="debut">Debut:</label>
-                <input type="date" id="debut">
+                <input type="date" id="debut" name="debut">
             </div>
             <div class="form-group">
                 <label for="number">Jersey Number</label>
-                <input type="number" id="number">
+                <input type="number" id="number" name="number">
             </div>
             <div class="form-group">
                 <label for="team">Team</label>
-                <input type="number" id="teamId">
+                <input type="number" id="teamId" name="teamId">
             </div>
             <div class="form-group">
                 <label for="rating">Rating</label>
-                <input type="number" id="rating">
+                <input type="number" step="any" id="rating" name="rating">
             </div>
             <div class="form-group">
                 <label for="salary">Salary</label>
-                <input type="number" id="salary">
+                <input type="number" id="salary" name="salary">
             </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type='submit' class="btn btn-primary">Submit</button>
         </form>
     </div>

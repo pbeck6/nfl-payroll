@@ -2,7 +2,9 @@
 
 // Express
 const express = require('express');
-const app = express();     
+const app = express();
+app.use(express.json());  // Handle input JSON data from forms
+app.use(express.urlencoded({extended: true}));
 
 // Database -> Gets credential from local db-connector file, not included in repo
 const { port, pool } = require('./db-connector');
@@ -28,6 +30,35 @@ app.get('/player', async function(req, res)
     {   const playerGet = 'SELECT * FROM player';
         rows = await pool.query(playerGet);
         res.render('player/index', { rows });
+});
+
+app.post('/player', async function(req, res) // Add new player
+    {   // Capture the incoming data and parse it back to a JS object
+        let data = req.body;
+        // Capture NULL values
+        if (data.birthdate.length == 0)
+        {
+            req.body.birthdate = null;
+        } else {
+            req.body.birthdate = `'${req.body.birthdate}'`;
+        };
+        if (data.debut.length == 0)
+        {
+            req.body.debut = null;
+        } else {
+            req.body.debut = `'${req.body.debut}'`;
+        };
+        if (data.teamId.length == 0)
+        {
+            req.body.teamId = null;
+        };
+        const addPlayer = `INSERT INTO player VALUES (NULL, '${data.name}', ${data.birthdate}, ${data.debut}, '${data.number}', ${data.teamId}, '${data.rating}', '${data.salary}')`;
+        try {
+            await pool.query(addPlayer);
+        } catch (err) {
+            res.send(err);    
+        };
+        res.redirect('/player');
 });
 
 // Team Routes
