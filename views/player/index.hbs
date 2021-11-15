@@ -67,36 +67,36 @@
         </table>
     </div>
 
-    <div id="addplayer" class='mb-4'>
+    <div id="addplayer" class='mb-4 col-md-4 p-1'>
         <p>Add a new player:</p>
         <form action='/player' method='POST'>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
+            <div class="form-group mb-1">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
             </div>
-            <div class="form-group">
-                <label for="birthdate">Birthdate:</label>
-                <input type="date" id="birthdate" name="birthdate">
+            <div class="form-group mb-1">
+                <label for="birthdate" class="form-label">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="debut">Debut:</label>
-                <input type="date" id="debut" name="debut">
+            <div class="form-group mb-1">
+                <label for="debut" class="form-label">Debut:</label>
+                <input type="date" id="debut" name="debut" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="number">Jersey Number</label>
-                <input type="number" id="number" name="number">
+            <div class="form-group mb-1">
+                <label for="number" class="form-label">Jersey Number</label>
+                <input type="number" id="number" name="number" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="team">Team</label>
-                <input type="number" id="teamId" name="teamId">
+            <div class="form-group mb-1">
+                <label for="team" class="form-label">Team</label>
+                <input type="number" id="teamId" name="teamId" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="rating">Rating</label>
-                <input type="number" step="any" id="rating" name="rating">
+            <div class="form-group mb-1">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="number" step="any" id="rating" name="rating" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="salary">Salary</label>
-                <input type="number" id="salary" name="salary">
+            <div class="form-group mb-1">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="number" id="salary" name="salary" class="form-control">
             </div>
                 <button type='submit' class="btn btn-primary">Submit</button>
         </form>

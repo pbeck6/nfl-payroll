@@ -38,18 +38,10 @@ app.post('/player', async function(req, res) // Add new player
     {   // Capture the incoming data and parse it back to a JS object
         let data = req.body;
         // Capture NULL values
-        if (data.birthdate.length == 0)
-        {
-            req.body.birthdate = null;
-        };
-        if (data.debut.length == 0)
-        {
-            req.body.debut = null;
-        };
-        if (data.teamId.length == 0)
-        {
-            req.body.teamId = null;
-        };
+        if (data.name.length == 0) { req.body.name = null; };
+        if (data.birthdate.length == 0) { req.body.birthdate = null; };
+        if (data.debut.length == 0) { req.body.debut = null; };
+        if (data.teamId.length == 0) { req.body.teamId = null; };
         const inserts = [ data.name, data.birthdate, data.debut, data.number, data.teamId, data.rating, data.salary ];
         const addPlayer = 'INSERT INTO player VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)';
         try {
