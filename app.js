@@ -41,14 +41,10 @@ app.post('/player', async function(req, res) // Add new player
         if (data.birthdate.length == 0)
         {
             req.body.birthdate = null;
-        } else {
-            req.body.birthdate = `'${req.body.birthdate}'`;
         };
         if (data.debut.length == 0)
         {
             req.body.debut = null;
-        } else {
-            req.body.debut = `'${req.body.debut}'`;
         };
         if (data.teamId.length == 0)
         {
