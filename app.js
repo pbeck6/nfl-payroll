@@ -54,9 +54,10 @@ app.post('/player', async function(req, res) // Add new player
         {
             req.body.teamId = null;
         };
-        const addPlayer = `INSERT INTO player VALUES (NULL, '${data.name}', ${data.birthdate}, ${data.debut}, '${data.number}', ${data.teamId}, '${data.rating}', '${data.salary}')`;
+        const inserts = [ data.name, data.birthdate, data.debut, data.number, data.teamId, data.rating, data.salary ];
+        const addPlayer = 'INSERT INTO player VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)';
         try {
-            await pool.query(addPlayer);
+            await pool.query(addPlayer, inserts);
         } catch (err) {
             res.send(err);    
         };
@@ -65,9 +66,10 @@ app.post('/player', async function(req, res) // Add new player
 
 app.delete('/player/:playerId', async function(req, res) // Delete existing player
     {   let { playerId } = req.params;
-        const deletePlayer = `DELETE FROM player WHERE playerId=${playerId}`;
+        const inserts = [playerId];
+        const deletePlayer = 'DELETE FROM player WHERE playerId=?';
         try {
-            await pool.query(deletePlayer);
+            await pool.query(deletePlayer, inserts);
         } catch (err) {
             res.send(err);    
         };
