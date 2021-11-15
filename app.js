@@ -29,8 +29,14 @@ app.get('/', function(req, res)
 
 // Player Routes
 app.get('/player', async function(req, res)
-    {   const playerGet = 'SELECT * FROM player';
-        rows = await pool.query(playerGet);
+    {   var playerGet = 'SELECT * FROM player';
+        const inserts = [];
+        if (req.query.salaryFilter) {
+            const { salaryFilter } = req.query;
+            inserts.push(salaryFilter);
+            playerGet += ' WHERE salary > ?';
+        };
+        rows = await pool.query(playerGet, inserts);
         res.render('player/index', { rows });
 });
 
