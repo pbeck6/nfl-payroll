@@ -81,7 +81,7 @@ app.get('/team', async function(req, res)
             teamGet += ' WHERE locationName = ?';
         };
         rows = await pool.query(teamGet, inserts);
-        teamLocations = await pool.query(locationGet)
+        teamLocations = await pool.query(locationGet);
         res.render('team/index', { rows, teamLocations });
 });
 
