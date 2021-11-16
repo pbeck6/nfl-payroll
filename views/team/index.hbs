@@ -10,11 +10,17 @@
     </div>
 
     <div id="tableteamfilter" class='mt-3 mb-1'>
-        {{!-- REMINDER: REPLACE TEXT INPUT WITH SELECT INPUT --}}
-        <label for="location">Search teams by location: </label>
-        <input type="text" id="location">
-        <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submut" class="btn btn-info">Reset</button>
+        <form action="/team" method="GET">
+            <label for="locationFilter">Search teams by location: </label>
+            <select name="locationFilter" id="locationFilter" class="form-select m-2">
+                <option value="">All locations</option>
+                {{#each teamLocations}}
+                <option value="{{this.locationName}}">{{this.locationName}}</option>
+                {{/each}}
+            </select>
+            <button type="submit" class="btn btn-primary">Submit Query</button>
+            <a href='/team' role="button" class="btn btn-info">Reset</a>
+        </form>
     </div>
 
     <div id="teamtable" class='mb-4'>
@@ -35,11 +41,17 @@
                     <td>{{this.teamId}}</td>
                     <td>{{this.locationName}}</td>
                     <td>{{this.teamName}}</td>
+                    {{#if this.stadium}}
                     <td>{{this.stadium}}</td>
+                    {{else}}
+                    <td>N/A</td>
+                    {{/if}}
                     <td>{{this.salaryCap}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                         <form class='d-inline' action='/team/{{this.teamId}}?_method=DELETE' method='POST'>
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 {{/each}}
@@ -47,24 +59,24 @@
         </table>
     </div>
 
-    <div id="addteam" class='mb-4'>
+    <div id="addteam" class='mb-4 col-md-4 p-1'>
         <p>Add a new team:</p>
-        <form>
+        <form action='/team' method='POST'>
             <div class="form-group">
-                <label for="location">Location:</label>
-                <input type="text" id="location" value="location">
+                <label for="locationName" class="form-label">Location:</label>
+                <input type="text" id="locationName" name="locationName" class="form-control" required>
             </div>
             <div class="form-group">    
-                <label for="teamname">Team Name:</label>
-                <input type="text" id="teamname" value="teamname">
+                <label for="teamName" class="form-label">Team Name:</label>
+                <input type="text" id="teamName" name="teamName" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="stadium">Stadium:</label>
-                <input type="text" id="stadium" value="stadium">
+                <label for="stadium" class="form-label">Stadium:</label>
+                <input type="text" id="stadium" name="stadium" class="form-control">
             </div>
             <div class="form-group">
-                <label for="salarycap"> Salary Cap:</label>
-                <input type="number" id="salarycap" value="salarycap">
+                <label for="salaryCap" class="form-label"> Salary Cap:</label>
+                <input type="number" id="salaryCap" name="salaryCap" class="form-control">
             </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
