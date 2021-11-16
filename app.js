@@ -36,7 +36,7 @@ app.get('/player', async function(req, res)
             inserts.push(salaryFilter);
             playerGet += ' WHERE salary > ?';
         };
-        rows = await pool.query(playerGet, inserts);
+        const rows = await pool.query(playerGet, inserts);
         res.render('player/index', { rows });
 });
 
@@ -80,8 +80,8 @@ app.get('/team', async function(req, res)
             inserts.push(locationFilter);
             teamGet += ' WHERE locationName = ?';
         };
-        rows = await pool.query(teamGet, inserts);
-        teamLocations = await pool.query(locationGet);
+        const rows = await pool.query(teamGet, inserts);
+        const teamLocations = await pool.query(locationGet);
         res.render('team/index', { rows, teamLocations });
 });
 
@@ -117,16 +117,16 @@ app.get('/position', async function(req, res)
     {   const posGet = 'SELECT * FROM `position`';
         const posPlayGet = 'SELECT * FROM positionplayer';
         const posCoachGet = 'SELECT * FROM positioncoach';
-        posRows = await pool.query(posGet);
-        posPlayRows = await pool.query(posPlayGet);
-        posCoachRows = await pool.query(posCoachGet);
+        const posRows = await pool.query(posGet);
+        const posPlayRows = await pool.query(posPlayGet);
+        const posCoachRows = await pool.query(posCoachGet);
         res.render('position/index', { posRows, posPlayRows, posCoachRows });
 });
 
 // Coach Routes //
 app.get('/coach', async function(req, res)
     {   const coachGet = 'SELECT * FROM coach';
-        rows = await pool.query(coachGet);
+        const rows = await pool.query(coachGet);
         res.render('coach/index', { rows });
 });
    
