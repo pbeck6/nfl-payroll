@@ -22,12 +22,12 @@ app.set('view engine', '.hbs');                 // Tell express to use the handl
 
 
 
-// Home Route
+// Home Route //
 app.get('/', function(req, res)
     {   res.render('home');
 });
 
-// Player Routes
+// Player Routes //
 app.get('/player', async function(req, res)
     {   var playerGet = 'SELECT * FROM player';
         const inserts = [];
@@ -70,7 +70,7 @@ app.delete('/player/:playerId', async function(req, res) // Delete existing play
         res.redirect('/player');
 });
 
-// Team Routes
+// Team Routes //
 app.get('/team', async function(req, res)
     {   let teamGet = 'SELECT * FROM team';
         const locationGet = 'SELECT locationName FROM team';
@@ -112,7 +112,7 @@ app.delete('/team/:teamId', async function(req, res) // Delete existing player
         res.redirect('/team');
 });
 
-// Position Routes
+// Position Routes //
 app.get('/position', async function(req, res)
     {   const posGet = 'SELECT * FROM `position`';
         const posPlayGet = 'SELECT * FROM positionplayer';
@@ -123,14 +123,14 @@ app.get('/position', async function(req, res)
         res.render('position/index', { posRows, posPlayRows, posCoachRows });
 });
 
-// Coach Routes
+// Coach Routes //
 app.get('/coach', async function(req, res)
     {   const coachGet = 'SELECT * FROM coach';
         rows = await pool.query(coachGet);
         res.render('coach/index', { rows });
 });
    
-// Listener
+// Listener //
 app.listen(PORT, function(){
     console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
 });
