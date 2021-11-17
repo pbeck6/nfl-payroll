@@ -76,15 +76,17 @@
     <h2 class='mb-1'>PositionPlayer</h2>
 
     <div id="tablepositionplayerfilter" class='mt-3 mb-1'>
-        <p>Submit a query to filter by position:</p>
-        <select class="form-select" name="positionfilter" id="positionfilter-ajax">
-            <option value="">Select a Position</option>
-            <option value="1">Quarterback</option>
-            <option value="2">Tight End</option>
-            <option value="3">Wide Reciever</option>
-        </select>
-        <button type="submit" class="btn btn-primary">Submit Query</button>
-        <a href='/position' role="button" class="btn btn-info">Reset</a>
+        <form action="/position" method="GET">
+            <label for="posPlayerFilter">Search by position: </label>
+            <select class="form-select" name="posPlayerFilter" id="posPlayerFilter">
+                <option value="">All positions</option>
+                {{#each posRows}}
+                 <option value="{{this.positionName}}">{{this.positionName}}</option>
+                {{/each}}
+            </select>
+            <button type="submit" class="btn btn-primary">Submit Query</button>
+            <a href='/position' role="button" class="btn btn-info">Reset</a>
+        </form>
     </div>
 
     <div id="positionplayertable" class='mb-4'>
@@ -135,15 +137,17 @@
         <h2 class='mb-1'>PositionCoach</h2>
 
     <div id="tablepositioncoachfilter" class='mt-3 mb-1'>
-        <p>Submit a query to filter by position:</p>
-        <select class="form-select" name="positionfilter" id="positionfilter-ajax">
-            <option value="">Select a Position</option>
-            <option value="1">Quarterback</option>
-            <option value="2">Tight End</option>
-            <option value="3">Wide Reciever</option>
-        </select>
-        <button type="submit" class="btn btn-primary">Submit Query</button>
-        <a href='/position' role="button" class="btn btn-info">Reset</a>
+        <form>
+            <label for="posCoachFilter">Search by position: </label>
+            <select class="form-select" name="posCoachFilter" id="posCoachFilter">
+                <option value="">Select a Position</option>
+                <option value="1">Quarterback</option>
+                <option value="2">Tight End</option>
+                <option value="3">Wide Reciever</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Submit Query</button>
+            <a href='/position' role="button" class="btn btn-info">Reset</a>
+        </form>
     </div>
 
     <div id="positioncoachtable" class='mb-4'>

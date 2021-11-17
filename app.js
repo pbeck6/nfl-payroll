@@ -126,6 +126,12 @@ app.get('/position', async function(req, res)
             posGet += ' WHERE teamGroup = ?';
         };
 
+        if (req.query.posPlayerFilter) {
+            const { posPlayerFilter } = req.query;
+            inserts.push(posPlayerFilter);
+            posPlayGet += ' WHERE positionName = ?';
+        };
+
         const teamGroups = await pool.query(teamGroupsGet);
         const posRows = await pool.query(posGet, inserts);
         const posPlayRows = await pool.query(posPlayGet, inserts);
