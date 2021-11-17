@@ -29,7 +29,7 @@ app.get('/', function(req, res)
 
 // Player Routes //
 app.get('/player', async function(req, res)
-    {   var playerGet = 'SELECT * FROM player';
+    {   let playerGet = 'SELECT * FROM player';
         const inserts = [];
         if (req.query.salaryFilter) {
             const { salaryFilter } = req.query;
@@ -173,6 +173,18 @@ app.delete('/position/:positionId', async function(req, res) // Delete existing 
         const deletePosition = 'DELETE FROM `position` WHERE positionId=?';
         try {
             await pool.query(deletePosition, inserts);
+        } catch (err) {
+            res.send(err);    
+        };
+        res.redirect('/position');
+});
+
+app.delete('/positionplayer/:positionId/:playerId', async function(req, res) // Delete existing position
+    {   let { positionId, playerId } = req.params;
+        const inserts = [positionId, playerId];
+        const deletePositionPlayer = 'DELETE FROM `positionplayer` WHERE positionId=? AND playerId=?';
+        try {
+            await pool.query(deletePositionPlayer, inserts);
         } catch (err) {
             res.send(err);    
         };
