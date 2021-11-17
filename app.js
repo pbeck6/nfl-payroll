@@ -115,7 +115,7 @@ app.delete('/team/:teamId', async function(req, res) // Delete existing team
 // Position Routes //
 app.get('/position', async function(req, res)
     {   let posGet = 'SELECT * FROM `position`';
-        let posPlayGet = 'SELECT * FROM positionplayer';
+        let posPlayGet = 'SELECT positionplayer.playerId, positionplayer.positionId, player.name, position.positionName FROM positionplayer INNER JOIN player ON positionplayer.playerId=player.playerId INNER JOIN `position` ON positionplayer.positionId=position.positionId';
         let posCoachGet = 'SELECT * FROM positioncoach';
         const teamGroupsGet = 'SELECT DISTINCT teamGroup FROM `position`';
 

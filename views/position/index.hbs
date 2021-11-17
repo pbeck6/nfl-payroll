@@ -91,7 +91,9 @@
         <table class='table'>
             <thead class='thead-dark'>
                 <tr>
+                    <th scope="col">Player Name</th>
                     <th scope="col">Player ID</th>
+                    <th scope="col">Position Name</th>
                     <th scope="col">Position ID</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -99,7 +101,9 @@
             <tbody>
                 {{#each posPlayRows}}
                 <tr>
+                    <td>{{this.name}}</td>
                     <td>{{this.playerId}}</td>
+                    <td>{{this.positionName}}</td>
                     <td>{{this.positionId}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
