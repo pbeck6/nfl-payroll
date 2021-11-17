@@ -114,9 +114,11 @@ app.delete('/team/:teamId', async function(req, res) // Delete existing player
 
 // Position Routes //
 app.get('/position', async function(req, res)
-    {   const posGet = 'SELECT * FROM `position`';
-        const posPlayGet = 'SELECT * FROM positionplayer';
-        const posCoachGet = 'SELECT * FROM positioncoach';
+    {   let posGet = 'SELECT * FROM `position`';
+        let posPlayGet = 'SELECT * FROM positionplayer';
+        let posCoachGet = 'SELECT * FROM positioncoach';
+        const teamGroupsGet = 'SELECT teamGroup FROM `position`';
+
         const posRows = await pool.query(posGet);
         const posPlayRows = await pool.query(posPlayGet);
         const posCoachRows = await pool.query(posCoachGet);

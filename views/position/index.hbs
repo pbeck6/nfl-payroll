@@ -12,10 +12,10 @@
     </div>
 
     <div id="tablepositionfilter" class='mt-3 mb-1'>
-        <label for="teamgroup">Search positions by group: (Offense, Defense, Special Teams) </label>
-        <input type="text" id="teamgroup">
+        <label for="teamGroup">Search positions by group: </label>
+        <input type="text" id="teamGroup">
         <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submut" class="btn btn-info">Reset</button>
+        <a href='/position' role="button" class="btn btn-info">Reset</a>
     </div>
 
     <div id="positiontable" class='mb-4'>
@@ -44,16 +44,20 @@
         </table>
     </div>
 
-    <div id="addposition" class='mb-4'>
+    <div id="addposition" class='mb-4 col-md-4 p-1'>
         <p>Add a new position:</p>
-        <form>
+        <form action="/position" method="POST">
             <div class="form-group">
-                <label for="positionname">Position Name:</label>
-                <input type="text" id="positionname" value="positionname">
+                <label for="positionName" class="form-label">Position Name:</label>
+                <input type="text" id="positionName" name="positionName" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="group">Team Group:</label>
-                <input type="text" id="group" value="group">
+                <label for="teamGroup" class="form-label">Team Group:</label>
+                <select name="teamGroup" id="teamGroup" class="form-select m-2">
+                    <option value="Offense">Offense</option>
+                    <option value="Defense">Defense</option>
+                    <option value="Special Teams">Special Teams</option>
+                </select>
             </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -71,7 +75,7 @@
             <option value="3">Wide Reciever</option>
         </select>
         <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submit" class="btn btn-info">Reset</button>
+        <a href='/position' role="button" class="btn btn-info">Reset</a>
     </div>
 
     <div id="positionplayertable" class='mb-4'>
@@ -126,7 +130,7 @@
             <option value="3">Wide Reciever</option>
         </select>
         <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submit" class="btn btn-info">Reset</button>
+        <a href='/position' role="button" class="btn btn-info">Reset</a>
     </div>
 
     <div id="positioncoachtable" class='mb-4'>
