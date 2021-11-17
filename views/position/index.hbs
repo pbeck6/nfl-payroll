@@ -12,10 +12,17 @@
     </div>
 
     <div id="tablepositionfilter" class='mt-3 mb-1'>
-        <label for="teamGroup">Search positions by group: </label>
-        <input type="text" id="teamGroup">
-        <button type="submit" class="btn btn-primary">Submit Query</button>
-        <a href='/position' role="button" class="btn btn-info">Reset</a>
+        <form action="/position" method="GET">
+            <label for="teamGroupFilter">Search positions by team group: </label>
+            <select name="teamGroupFilter" id="teamGroupFilter" class="form-select m-2">
+                <option value="">All Team Groups</option>
+                {{#each teamGroups}}
+                <option value="{{this.teamGroup}}">{{this.teamGroup}}</option>
+                {{/each}}
+            </select>
+            <button type="submit" class="btn btn-primary">Submit Query</button>
+            <a href='/position' role="button" class="btn btn-info">Reset</a>
+        </form>
     </div>
 
     <div id="positiontable" class='mb-4'>

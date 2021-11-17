@@ -85,7 +85,7 @@ app.get('/team', async function(req, res)
         res.render('team/index', { rows, teamLocations });
 });
 
-app.post('/team', async function(req, res) // Add new player
+app.post('/team', async function(req, res) // Add new team
     {   // Capture the incoming data and parse it back to a JS object
         let data = req.body;
         // Capture DEFAULT values
@@ -100,7 +100,7 @@ app.post('/team', async function(req, res) // Add new player
         res.redirect('/team');
 });
 
-app.delete('/team/:teamId', async function(req, res) // Delete existing player
+app.delete('/team/:teamId', async function(req, res) // Delete existing team
     {   let { teamId } = req.params;
         const inserts = [teamId];
         const deleteTeam = 'DELETE FROM team WHERE teamId=?';
@@ -119,10 +119,26 @@ app.get('/position', async function(req, res)
         let posCoachGet = 'SELECT * FROM positioncoach';
         const teamGroupsGet = 'SELECT teamGroup FROM `position`';
 
+        const teamGroups = await pool.query(teamGroupsGet);
         const posRows = await pool.query(posGet);
         const posPlayRows = await pool.query(posPlayGet);
         const posCoachRows = await pool.query(posCoachGet);
-        res.render('position/index', { posRows, posPlayRows, posCoachRows });
+        res.render('position/index', { teamGroups, posRows, posPlayRows, posCoachRows });
+});
+
+app.post('/position', async function(req, res) // Add new player
+    {   // Capture the incoming data and parse it back to a JS object
+        let data = req.body;
+        // Capture DEFAULT values
+        if (data.salaryCap.length == 0) { req.body.salaryCap = 10000000 };
+        const inserts = [ data.locationName, data.teamName, data.stadium, data.salaryCap ];
+        const addTeam = 'INSERT INTO team VALUES (NULL, ?, ?, ?, ?)';
+        try {
+            await pool.query(addTeam, inserts);
+        } catch (err) {
+            res.send(err);    
+        };
+        res.redirect('/team');
 });
 
 // Coach Routes //
