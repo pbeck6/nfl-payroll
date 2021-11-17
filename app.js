@@ -118,6 +118,7 @@ app.get('/position', async function(req, res)
         let posPlayGet = 'SELECT positionplayer.playerId, positionplayer.positionId, player.name, position.positionName FROM positionplayer INNER JOIN player ON positionplayer.playerId=player.playerId INNER JOIN `position` ON positionplayer.positionId=position.positionId';
         let posCoachGet = 'SELECT * FROM positioncoach';
         const teamGroupsGet = 'SELECT DISTINCT teamGroup FROM `position`';
+        const playersGet = 'SELECT DISTINCT playerId, `name` FROM player';
 
         const inserts = []
         if (req.query.teamGroupFilter) {
@@ -133,10 +134,11 @@ app.get('/position', async function(req, res)
         };
 
         const teamGroups = await pool.query(teamGroupsGet);
+        const players = await pool.query(playersGet);
         const posRows = await pool.query(posGet, inserts);
         const posPlayRows = await pool.query(posPlayGet, inserts);
         const posCoachRows = await pool.query(posCoachGet, inserts);
-        res.render('position/index', { teamGroups, posRows, posPlayRows, posCoachRows });
+        res.render('position/index', { teamGroups, players, posRows, posPlayRows, posCoachRows });
 });
 
 app.post('/position', async function(req, res) // Add new position
@@ -148,6 +150,19 @@ app.post('/position', async function(req, res) // Add new position
             await pool.query(addPosition, inserts);
         } catch (err) {
             res.send(err);    
+        };
+        res.redirect('/position');
+});
+
+app.post('/positionplayer', async function(req, res) // Add new positionplayer
+    {   // Capture the incoming data and parse it back to a JS object
+        let data = req.body;
+        const inserts = [ data.ppPlayerName, data.ppPositionName ];
+        const addPositionPlayer = 'INSERT INTO positionplayer VALUES (?, ?)';
+        try {
+            await pool.query(addPositionPlayer, inserts);
+        } catch (err) {
+            res.send(err);
         };
         res.redirect('/position');
 });

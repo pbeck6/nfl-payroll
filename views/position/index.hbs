@@ -119,15 +119,22 @@
 
     <div id="addpositionplayer" class='mb-4'>
         <p>Add a new position for player:</p>
-        <form>
-            {{!-- REMINDER: REPLACE TEXT INPUT WITH SELECT INPUT --}}
+        <form action='/positionplayer' method='POST'>
             <div class="form-group">
-                <label for="positionname">Position Name:</label>
-                <input type="text" id="positionname" value="positionname">
+                <label for="ppPositionName">Position Name:</label>
+                <select class="form-select" name="ppPositionName" id="ppPositionName">
+                    {{#each posRows}}
+                    <option value="{{this.positionId}}">{{this.positionName}}</option>
+                    {{/each}}
+                </select>
             </div>
-            <div class="form-group"> 
-                <label for="group">Player Name:</label>
-                <input type="text" id="group" value="group">
+            <div class="form-group">
+                <label for="ppPlayerName">Player Name:</label>
+                <select class="form-select" name="ppPlayerName" id="ppPlayerName">
+                    {{#each players}}
+                    <option value="{{this.playerId}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
             </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
