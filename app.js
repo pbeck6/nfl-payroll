@@ -30,14 +30,16 @@ app.get('/', function(req, res)
 // Player Routes //
 app.get('/player', async function(req, res)
     {   let playerGet = 'SELECT * FROM player';
+        const teamsGet = 'SELECT teamId, locationName, teamName FROM team';
         const inserts = [];
         if (req.query.salaryFilter) {
             const { salaryFilter } = req.query;
             inserts.push(salaryFilter);
             playerGet += ' WHERE salary > ?';
         };
+        const teams = await pool.query(teamsGet);
         const rows = await pool.query(playerGet, inserts);
-        res.render('player/index', { rows });
+        res.render('player/index', { rows, teams });
 });
 
 app.post('/player', async function(req, res) // Add new player
@@ -226,14 +228,16 @@ app.delete('/positioncoach/:positionId/:coachId', async function(req, res) { // 
 // Coach Routes //
 app.get('/coach', async function(req, res)
     {   let coachGet = 'SELECT * FROM coach';
+        const teamsGet = 'SELECT teamId, locationName, teamName FROM team';
         const inserts = [];
         if (req.query.ratingFilter) {
             const { ratingFilter } = req.query;
             inserts.push(ratingFilter);
             coachGet += ' WHERE rating > ?';
         }
+        const teams = await pool.query(teamsGet);
         const rows = await pool.query(coachGet, inserts);
-        res.render('coach/index', { rows });
+        res.render('coach/index', { rows, teams });
 });
    
 app.post('/coach', async function(req,res) { // Add new coach
