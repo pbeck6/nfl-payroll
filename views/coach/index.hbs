@@ -10,10 +10,12 @@
     </div>
 
     <div id="tablecoachfilter" class='mt-3 mb-1'>
-        <label for="rating">Search coaches by rating: </label>
-        <input type="number" id="rating">
-        <button type="submit" class="btn btn-primary">Submit Query</button>
-        <button type="submut" class="btn btn-info">Reset</button>
+        <form action='/coach' method='GET'>
+            <label for="ratingFilter">Find ratings greater than: </label>
+            <input type="number" id="ratingFilter" name="ratingFilter" value=0>
+            <button type="submit" class="btn btn-primary">Submit Query</button>
+            <a href='/coach' role="button" class="btn btn-info">Reset</a>
+        </form>
     </div>
 
     <div id="coachtable" class='mb-4'>
@@ -44,7 +46,9 @@
                     <td>{{this.salary}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <form class='d-inline' action='/coach/{{this.coachId}}?_method=DELETE' method='POST'>
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 {{/each}}
@@ -54,25 +58,25 @@
 
     <div id="addcoach" class='mb-4 col-md-4 p-1'>
         <p>Add a new coach:</p>
-        <form>
+        <form action='/coach' method='POST'>
             <div class="form-group">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" class="form-control" required>
+                <input type="text" id="name" name="name" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="type" class="form-label">Coach Type:</label>
-                <input type="text" id="type" class="form-control">
+                <input type="text" id="coachType" name="coachType" class="form-control">
             <div class="form-group">
                 <label for="team" class="form-label">Team</label>
-                <input type="number" id="team" class="form-control">
+                <input type="number" id="teamId" name="teamId" class="form-control">
             </div>
             <div class="form-group">
                 <label for="rating" class="form-label">Rating</label>
-                <input type="number" id="rating" class="form-control">
+                <input type="number" id="rating" name="rating" class="form-control">
             </div>
             <div class="form-group">
                 <label for="salary" class="form-label">Salary</label>
-                <input type="number" id="salary" class="form-control">
+                <input type="number" id="salary" name="salary" class="form-control">
             </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>
