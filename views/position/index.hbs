@@ -56,11 +56,11 @@
     <div id="addposition" class='mb-4 col-md-4 p-1'>
         <p>Add a new position:</p>
         <form action="/position" method="POST">
-            <div class="form-group">
+            <div class="form-group mb-1">
                 <label for="positionName" class="form-label">Position Name:</label>
                 <input type="text" id="positionName" name="positionName" class="form-control" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-1">
                 <label for="teamGroup" class="form-label">Team Group:</label>
                 <select name="teamGroup" id="teamGroup" class="form-select m-2">
                     <option value="Offense">Offense</option>
@@ -163,20 +163,20 @@
         <table class='table'>
             <thead class='thead-dark'>
                 <tr>
-                    <th scope="col">Position Name</th>
-                    <th scope="col">Position ID</th>
                     <th scope="col">Coach Name</th>
                     <th scope="col">Coach ID</th>
+                    <th scope="col">Position Name</th>
+                    <th scope="col">Position ID</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each posCoachRows}}
                 <tr>
-                    <td>{{this.positionName}}</td>
-                    <td>{{this.positionId}}</td>
                     <td>{{this.name}}</td>
                     <td>{{this.coachId}}</td>
+                    <td>{{this.positionName}}</td>
+                    <td>{{this.positionId}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
                         <form class='d-inline' action='/positioncoach/{{this.positionId}}/{{this.coachId}}?_method=DELETE' method='POST'>

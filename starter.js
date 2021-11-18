@@ -22,10 +22,10 @@ const { pool } = require('./db-connector');
         await pool.query('CREATE TABLE `position` (positionId INT UNSIGNED NOT NULL AUTO_INCREMENT, positionName VARCHAR(255) NOT NULL, teamGroup VARCHAR(255) NOT NULL, PRIMARY KEY (positionId)) ENGINE = InnoDB');
         await pool.query('INSERT INTO `position` VALUES (NULL, "Linebacker", "Defense")');
 
-        await pool.query('CREATE TABLE positionplayer (playerId INT UNSIGNED NOT NULL, positionId INT UNSIGNED NOT NULL, FOREIGN KEY (playerId) REFERENCES player (playerId), FOREIGN KEY (positionId) REFERENCES `position` (positionId)) ENGINE = InnoDB');
+        await pool.query('CREATE TABLE positionplayer (playerId INT UNSIGNED NOT NULL, positionId INT UNSIGNED NOT NULL, FOREIGN KEY (playerId) REFERENCES player (playerId) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (positionId) REFERENCES `position` (positionId) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB');
         await pool.query('INSERT INTO positionplayer VALUES (1, 1)');
 
-        await pool.query('CREATE TABLE positioncoach (coachId INT UNSIGNED NOT NULL, positionId INT UNSIGNED NOT NULL, FOREIGN KEY (coachId) REFERENCES coach (coachId), FOREIGN KEY (positionId) REFERENCES `position` (positionId)) ENGINE = InnoDB');
+        await pool.query('CREATE TABLE positioncoach (coachId INT UNSIGNED NOT NULL, positionId INT UNSIGNED NOT NULL, FOREIGN KEY (coachId) REFERENCES coach (coachId) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (positionId) REFERENCES `position` (positionId) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB');
         await pool.query('INSERT INTO positioncoach VALUES (1, 1)');
         
         } catch (err) {

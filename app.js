@@ -44,7 +44,6 @@ app.post('/player', async function(req, res) // Add new player
     {   // Capture the incoming data and parse it back to a JS object
         let data = req.body;
         // Capture NULL values
-        if (data.name.length == 0) { req.body.name = null };
         if (data.birthdate.length == 0) { req.body.birthdate = null };
         if (data.debut.length == 0) { req.body.debut = null };
         if (data.teamId.length == 0) { req.body.teamId = null };
@@ -241,14 +240,13 @@ app.post('/coach', async function(req,res) { // Add new coach
     // Capture incoming data and parse it back to a JS object
     let data = req.body
     // Capture NULL values
-    if (data.name.length == 0) {req.body.name = null};
-    if (data.teamId.length == 0) {req.body.name = null};
+    if (data.teamId.length == 0) {req.body.teamId = null};
     const inserts = [ data.name, data.coachType, data.teamId, data.rating, data.salary];
     const addCoach = 'INSERT INTO coach VALUES (NULL, ?, ?, ?, ?, ?)';
     try {
         await pool.query(addCoach, inserts);
     } catch (err) {
-        res.sent(err);
+        res.send(err);
     };
     res.redirect('/coach');
 });
@@ -256,7 +254,7 @@ app.post('/coach', async function(req,res) { // Add new coach
 app.delete('/coach/:coachId', async function(req, res) { // Delete existing coach
     let { coachId } = req.params;
     const inserts = [coachId]
-    const deleteCoach = 'DELETE FROM coach WHERE playerId=?';
+    const deleteCoach = 'DELETE FROM coach WHERE coachId=?';
     try {
         await pool.query(deleteCoach, inserts);
     } catch (err) {
