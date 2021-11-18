@@ -116,9 +116,10 @@ app.delete('/team/:teamId', async function(req, res) // Delete existing team
 app.get('/position', async function(req, res)
     {   let posGet = 'SELECT * FROM `position`';
         let posPlayGet = 'SELECT positionplayer.playerId, positionplayer.positionId, player.name, position.positionName FROM positionplayer INNER JOIN player ON positionplayer.playerId=player.playerId INNER JOIN `position` ON positionplayer.positionId=position.positionId';
-        let posCoachGet = 'SELECT * FROM positioncoach';
+        let posCoachGet = 'SELECT positioncoach.coachId, positioncoach.positionId, coach.name, position.positionName FROM positioncoach INNER JOIN coach ON positioncoach.coachId=coach.coachId INNER JOIN `position` ON positioncoach.positionId=position.positionId';
         const teamGroupsGet = 'SELECT DISTINCT teamGroup FROM `position`';
         const playersGet = 'SELECT DISTINCT playerId, `name` FROM player';
+        const coachesGet = 'SELECT DISTINCT coachId, `name` FROM coach';
 
         const inserts = []
         if (req.query.teamGroupFilter) {
@@ -133,12 +134,19 @@ app.get('/position', async function(req, res)
             posPlayGet += ' WHERE positionName = ?';
         };
 
+        if (req.query.posCoachFilter) {
+            const { posCoachFilter } = req.query;
+            inserts.push(posCoachFilter);
+            posCoachGet += ' WHERE positionName = ?';
+        };
+
         const teamGroups = await pool.query(teamGroupsGet);
         const players = await pool.query(playersGet);
+        const coaches = await pool.query(coachesGet);
         const posRows = await pool.query(posGet, inserts);
         const posPlayRows = await pool.query(posPlayGet, inserts);
         const posCoachRows = await pool.query(posCoachGet, inserts);
-        res.render('position/index', { teamGroups, players, posRows, posPlayRows, posCoachRows });
+        res.render('position/index', { teamGroups, players, coaches, posRows, posPlayRows, posCoachRows });
 });
 
 app.post('/position', async function(req, res) // Add new position
@@ -167,10 +175,10 @@ app.post('/positionplayer', async function(req, res) // Add new positionplayer
         res.redirect('/position');
 });
 
-app.post('/postitioncoach', async function(req, res) { //Add new positioncoach
+app.post('/positioncoach', async function(req, res) { //Add new positioncoach
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
-    const inserts = [data.ppCoachName, data.ppPositionName];
+    const inserts = [data.pcCoachName, data.pcPositionName];
     const addPositionCoach = 'INSERT INTO positioncoach VALUES (?, ?)';
     try {
         await pool.query(addPositionCoach, inserts);
@@ -192,7 +200,7 @@ app.delete('/position/:positionId', async function(req, res) // Delete existing 
         res.redirect('/position');
 });
 
-app.delete('/positionplayer/:positionId/:playerId', async function(req, res) // Delete existing position
+app.delete('/positionplayer/:positionId/:playerId', async function(req, res) // Delete existing positionplayer
     {   let { positionId, playerId } = req.params;
         const inserts = [positionId, playerId];
         const deletePositionPlayer = 'DELETE FROM `positionplayer` WHERE positionId=? AND playerId=?';

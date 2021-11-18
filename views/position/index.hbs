@@ -1,4 +1,4 @@
-h1 class='mb-4'>Manage Positions</h1>
+<h1 class='mb-4'>Manage Positions</h1>
     <div id="instructions" class='mb-4'>
         <p>Page allows you to manage your positions including:</p>
         <ul class="list-group list-group-flush">
@@ -149,9 +149,9 @@ h1 class='mb-4'>Manage Positions</h1>
         <form action="/position" method="GET">
             <label for="posCoachFilter">Search by position: </label>
             <select class="form-select" name="posCoachFilter" id="posCoachFilter">
-                <option value="">Select a Position</option>
+                <option value="">All positions</option>
                 {{#each posRows}}
-                 <option value="{{this.positionName}}">{{this.positionName}}</option>
+                <option value="{{this.positionName}}">{{this.positionName}}</option>
                 {{/each}}
             </select>
             <button type="submit" class="btn btn-primary">Submit Query</button>
@@ -163,7 +163,9 @@ h1 class='mb-4'>Manage Positions</h1>
         <table class='table'>
             <thead class='thead-dark'>
                 <tr>
+                    <th scope="col">Position Name</th>
                     <th scope="col">Position ID</th>
+                    <th scope="col">Coach Name</th>
                     <th scope="col">Coach ID</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -173,7 +175,7 @@ h1 class='mb-4'>Manage Positions</h1>
                 <tr>
                     <td>{{this.positionName}}</td>
                     <td>{{this.positionId}}</td>
-                    <td>{{this.coachName</td>
+                    <td>{{this.name}}</td>
                     <td>{{this.coachId}}</td>
                     <td>
                         <button class="btn btn-warning">Edit</button>
@@ -191,17 +193,17 @@ h1 class='mb-4'>Manage Positions</h1>
         <p>Add a new position for coach:</p>
         <form action="/positioncoach" method="POST">
             <div class="form-group">
-                <label for="ppPositionName">Position Name:</label>
-                <select class="form-select" name="ppPositionName" id="ppPositionName">
+                <label for="pcPositionName">Position Name:</label>
+                <select class="form-select" name="pcPositionName" id="pcPositionName">
                     {{#each posRows}}
                     <option value="{{this.positionId}}">{{this.positionName}}</option>
                     {{/each}}
                 </select>
             </div>
             <div class="form-group">
-                <label for="ppCoachName">Coach Name:</label>
-                <select class="form-select" name="ppCoachName" id="ppCoachName">
-                    {{#each posCoachRows}}
+                <label for="pcCoachName">Coach Name:</label>
+                <select class="form-select" name="pcCoachName" id="pcCoachName">
+                    {{#each coaches}}
                     <option value="{{this.coachId}}">{{this.name}}</option>
                     {{/each}}
                 </select>
