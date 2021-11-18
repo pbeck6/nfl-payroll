@@ -1,0 +1,38 @@
+<h1 class='mb-4'>Edit Position</h1>
+    <div id="instructions" class='mb-4'>
+        <p>Page allows you to edit your position</p>
+    </div>
+    
+    <div id="editposition" class='mb-4 col-md-4 p-1'>
+        <p>Edit existing position:</p>
+        {{#each data}}
+        <form action="/position/{{this.positionId}}?_method=PUT" method="POST">
+            <div class="form-group mb-1">
+                <label for="positionName" class="form-label">Position Name:</label>
+                <input type="text" id="positionName" name="positionName" class="form-control" value="{{this.positionName}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="teamGroup" class="form-label">Team Group:</label>
+                <select name="teamGroup" id="teamGroup" class="form-select m-2">
+                    {{#eq this.teamGroup "Offense"}}
+                        <option value="Offense">Offense</option>
+                        <option value="Defense">Defense</option>
+                        <option value="Special Teams">Special Teams</option>
+                    {{/eq}}
+                    {{#eq this.teamGroup "Defense"}}
+                        <option value="Defense">Defense</option>
+                        <option value="Offense">Offense</option>
+                        <option value="Special Teams">Special Teams</option>
+                    {{/eq}}
+                    {{#eq this.teamGroup "Special Teams"}}
+                        <option value="Special Teams">Special Teams</option>
+                        <option value="Defense">Defense</option>
+                        <option value="Offense">Offense</option>
+                    {{/eq}}
+                </select>
+            </div>
+                <button type="submit" class="btn btn-primary m-4">Submit</button>
+                <a href='/position' role="button" class="btn btn-danger">Cancel Changes</a>
+        </form>
+        {{/each}}
+    </div>

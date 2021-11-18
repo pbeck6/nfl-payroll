@@ -42,7 +42,9 @@
                     <td>{{this.positionName}}</td>
                     <td>{{this.teamGroup}}</td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
+                        <form class='d-inline' action='/position/edit/{{this.positionId}}' method='GET'>
+                            <button class="btn btn-warning">Edit</button>
+                        </form>
                         <form class='d-inline' action='/position/{{this.positionId}}?_method=DELETE' method='POST'>
                             <button class="btn btn-danger">Delete</button>
                         </form>

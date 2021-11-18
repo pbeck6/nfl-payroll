@@ -21,7 +21,6 @@ app.engine('.hbs', exphbs({                     // Create an instance of the han
 app.set('view engine', '.hbs');                 // Tell express to use the handlebars engine whenever it encounters a *.hbs file.
 
 
-
 // Home Route //
 app.get('/', function(req, res)
     {   res.render('home');
@@ -37,9 +36,13 @@ app.get('/player', async function(req, res)
             inserts.push(salaryFilter);
             playerGet += ' WHERE salary > ?';
         };
+        try {
         const teams = await pool.query(teamsGet);
         const rows = await pool.query(playerGet, inserts);
         res.render('player/index', { rows, teams });
+        } catch (err) {
+            res.send(err);    
+        };
 });
 
 app.post('/player', async function(req, res) // Add new player
@@ -81,9 +84,13 @@ app.get('/team', async function(req, res)
             inserts.push(locationFilter);
             teamGet += ' WHERE locationName = ?';
         };
+        try {
         const rows = await pool.query(teamGet, inserts);
         const teamLocations = await pool.query(locationGet);
         res.render('team/index', { rows, teamLocations });
+        } catch (err) {
+            res.send(err);    
+        };
 });
 
 app.post('/team', async function(req, res) // Add new team
@@ -140,7 +147,7 @@ app.get('/position', async function(req, res)
             inserts.push(posCoachFilter);
             posCoachGet += ' WHERE positionName = ?';
         };
-
+        try {
         const teamGroups = await pool.query(teamGroupsGet);
         const players = await pool.query(playersGet);
         const coaches = await pool.query(coachesGet);
@@ -148,6 +155,21 @@ app.get('/position', async function(req, res)
         const posPlayRows = await pool.query(posPlayGet, inserts);
         const posCoachRows = await pool.query(posCoachGet, inserts);
         res.render('position/index', { teamGroups, players, coaches, posRows, posPlayRows, posCoachRows });
+        } catch (err) {
+            res.send(err);    
+        };
+});
+
+app.get('/position/edit/:positionId', async function(req, res) // Get existing position
+{   let { positionId } = req.params;
+    const inserts = [ positionId ];
+    const getEditPosition = 'SELECT * FROM `position` WHERE positionId=?';
+    try {
+        let data = await pool.query(getEditPosition, inserts);
+        res.render('position/edit', { data });
+    } catch (err) {
+        res.send(err);
+    };
 });
 
 app.post('/position', async function(req, res) // Add new position
@@ -188,6 +210,19 @@ app.post('/positioncoach', async function(req, res) { //Add new positioncoach
     }
     res.redirect('/position');
 })
+
+app.put('/position/:positionId', async function(req, res) // Edit existing position
+{   let { positionId } = req.params;
+    let data = req.body;
+    const inserts = [ data.positionName, data.teamGroup, positionId ];
+    const editPosition = 'UPDATE `position` SET positionName=?, teamGroup=? WHERE positionId=?';
+    try {
+        await pool.query(editPosition, inserts);
+    } catch (err) {
+        res.send(err);    
+    };
+    res.redirect('/position');
+});
 
 app.delete('/position/:positionId', async function(req, res) // Delete existing position
     {   let { positionId } = req.params;
@@ -234,15 +269,19 @@ app.get('/coach', async function(req, res)
             const { ratingFilter } = req.query;
             inserts.push(ratingFilter);
             coachGet += ' WHERE rating > ?';
-        }
+        };
+        try {
         const teams = await pool.query(teamsGet);
         const rows = await pool.query(coachGet, inserts);
         res.render('coach/index', { rows, teams });
+        } catch (err) {
+            res.send(err);
+        };
 });
    
 app.post('/coach', async function(req,res) { // Add new coach
     // Capture incoming data and parse it back to a JS object
-    let data = req.body
+    let data = req.body;
     // Capture NULL values
     if (data.teamId.length == 0) {req.body.teamId = null};
     const inserts = [ data.name, data.coachType, data.teamId, data.rating, data.salary];
@@ -257,15 +296,15 @@ app.post('/coach', async function(req,res) { // Add new coach
 
 app.delete('/coach/:coachId', async function(req, res) { // Delete existing coach
     let { coachId } = req.params;
-    const inserts = [coachId]
+    const inserts = [coachId];
     const deleteCoach = 'DELETE FROM coach WHERE coachId=?';
     try {
         await pool.query(deleteCoach, inserts);
     } catch (err) {
         res.send(err);
-    }
+    };
     res.redirect('/coach');
-})
+});
 
 // Listener //
 app.listen(PORT, function(){
