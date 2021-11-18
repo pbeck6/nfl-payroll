@@ -167,6 +167,19 @@ app.post('/positionplayer', async function(req, res) // Add new positionplayer
         res.redirect('/position');
 });
 
+app.post('/postitioncoach', async function(req, res) { //Add new positioncoach
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+    const inserts = [data.ppCoachName, data.ppPositionName];
+    const addPositionCoach = 'INSERT INTO positioncoach VALUES (?, ?)';
+    try {
+        await pool.query(addPositionCoach, inserts);
+    } catch (err) {
+        res.send(err);
+    }
+    res.redirect('/position');
+})
+
 app.delete('/position/:positionId', async function(req, res) // Delete existing position
     {   let { positionId } = req.params;
         const inserts = [positionId];
@@ -191,13 +204,59 @@ app.delete('/positionplayer/:positionId/:playerId', async function(req, res) // 
         res.redirect('/position');
 });
 
+app.delete('/positioncoach/:positionId/:coachId', async function(req, res) { // Delete existing positioncoach
+    let { positionId, coachId } = req.params;
+    const inserts = [positionId, coachId];
+    const deletePositionCoach = 'DELETE FROM `positioncoach` WHERE positionId=? AND coachId=?';
+    try {
+        await pool.query(deletePositionCoach, inserts);
+    } catch (err) {
+        res.send(err);
+    }
+    res.redirect('/position');
+});
+
 // Coach Routes //
 app.get('/coach', async function(req, res)
-    {   const coachGet = 'SELECT * FROM coach';
-        const rows = await pool.query(coachGet);
+    {   let coachGet = 'SELECT * FROM coach';
+        const inserts = [];
+        if (req.query.ratingFilter) {
+            const { ratingFilter } = req.query;
+            inserts.push(ratingFilter);
+            coachGet += ' WHERE rating > ?';
+        }
+        const rows = await pool.query(coachGet, inserts);
         res.render('coach/index', { rows });
 });
    
+app.post('/coach', async function(req,res) { // Add new coach
+    // Capture incoming data and parse it back to a JS object
+    let data = req.body
+    // Capture NULL values
+    if (data.name.length == 0) {req.body.name = null};
+    if (data.teamId.length == 0) {req.body.name = null};
+    const inserts = [ data.name, data.coachType, data.teamId, data.rating, data.salary];
+    const addCoach = 'INSERT INTO coach VALUES (NULL, ?, ?, ?, ?, ?)';
+    try {
+        await pool.query(addCoach, inserts);
+    } catch (err) {
+        res.sent(err);
+    };
+    res.redirect('/coach');
+});
+
+app.delete('/coach/:coachId', async function(req, res) { // Delete existing coach
+    let { coachId } = req.params;
+    const inserts = [coachId]
+    const deleteCoach = 'DELETE FROM coach WHERE playerId=?';
+    try {
+        await pool.query(deleteCoach, inserts);
+    } catch (err) {
+        res.send(err);
+    }
+    res.redirect('/coach');
+})
+
 // Listener //
 app.listen(PORT, function(){
     console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
