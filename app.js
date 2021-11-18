@@ -269,5 +269,5 @@ app.delete('/coach/:coachId', async function(req, res) { // Delete existing coac
 
 // Listener //
 app.listen(PORT, function(){
-    console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')
+    console.log('Express started on port:' + PORT + '; press Ctrl-C to terminate.')
 });
