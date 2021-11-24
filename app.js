@@ -172,6 +172,36 @@ app.get('/position/edit/:positionId', async function(req, res) // Get existing p
     };
 });
 
+app.get('/positionplayer/edit/:positionId/:playerId', async function(req, res) // Get existing positionplayer
+{   let { positionId, playerId } = req.params;
+    const getEditPositionPlayer = 'SELECT DISTINCT positionplayer.playerId, positionplayer.positionId, player.name, position.positionName FROM positionplayer INNER JOIN player ON positionplayer.playerId=player.playerId INNER JOIN `position` ON positionplayer.positionId=position.positionId WHERE positionplayer.positionId = ? AND positionplayer.playerId = ?';
+    const getOtherPlayers = 'SELECT * FROM player WHERE playerId != ?';
+    const getOtherPositions = 'SELECT * FROM `position` WHERE positionId != ?';
+    try {
+        const data = await pool.query(getEditPositionPlayer, [ positionId, playerId ]);
+        const otherPlayers = await pool.query(getOtherPlayers, [playerId]);
+        const otherPositions = await pool.query(getOtherPositions, [positionId]);
+        res.render('positionplayer/edit', { data, otherPlayers, otherPositions });
+    } catch (err) {
+        res.send(err);
+    };
+});
+
+app.get('/positioncoach/edit/:positionId/:coachId', async function(req, res) // Get existing positioncoach
+{   let { positionId, coachId } = req.params;
+    const getEditPositionPlayer = 'SELECT DISTINCT positioncoach.coachId, positioncoach.positionId, coach.name, position.positionName FROM positioncoach INNER JOIN coach ON positioncoach.coachId=coach.coachId INNER JOIN `position` ON positioncoach.positionId=position.positionId WHERE positioncoach.positionId = ? AND positioncoach.coachId = ?';
+    const getOtherCoaches = 'SELECT * FROM coach WHERE coachId != ?';
+    const getOtherPositions = 'SELECT * FROM `position` WHERE positionId != ?';
+    try {
+        const data = await pool.query(getEditPositionPlayer, [ positionId, coachId ]);
+        const otherCoaches = await pool.query(getOtherCoaches, [coachId]);
+        const otherPositions = await pool.query(getOtherPositions, [positionId]);
+        res.render('positioncoach/edit', { data, otherCoaches, otherPositions });
+    } catch (err) {
+        res.send(err);
+    };
+});
+
 app.post('/position', async function(req, res) // Add new position
     {   // Capture the incoming data and parse it back to a JS object
         let data = req.body;
@@ -218,6 +248,32 @@ app.put('/position/:positionId', async function(req, res) // Edit existing posit
     const editPosition = 'UPDATE `position` SET positionName=?, teamGroup=? WHERE positionId=?';
     try {
         await pool.query(editPosition, inserts);
+    } catch (err) {
+        res.send(err);    
+    };
+    res.redirect('/position');
+});
+
+app.put('/positionplayer/:positionId/:playerId', async function(req, res) // Edit existing positionplayer
+{   let { positionId, playerId } = req.params;
+    let data = req.body;
+    const inserts = [ data.positionId, data.playerId, data.positionId, data.playerId, positionId, playerId ];
+    const editPositionPlayer = 'UPDATE positionplayer SET positionId=?, playerId=? WHERE NOT EXISTS (SELECT * FROM positionplayer WHERE positionId=? AND playerId=?) AND positionId=? AND playerId=?';
+    try {
+        await pool.query(editPositionPlayer, inserts);
+    } catch (err) {
+        res.send(err);    
+    };
+    res.redirect('/position');
+});
+
+app.put('/positioncoach/:positionId/:coachId', async function(req, res) // Edit existing positioncoach
+{   let { positionId, coachId } = req.params;
+    let data = req.body;
+    const inserts = [ data.positionId, data.coachId, data.positionId, data.coachId, positionId, coachId ];
+    const editPositionCoach = 'UPDATE positioncoach SET positionId=?, coachId=? WHERE NOT EXISTS (SELECT * FROM positioncoach WHERE positionId=? AND coachId=?) AND positionId=? AND coachId=?';
+    try {
+        await pool.query(editPositionCoach, inserts);
     } catch (err) {
         res.send(err);    
     };

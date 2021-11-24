@@ -1,0 +1,37 @@
+<h1 class='mb-4'>Edit PositionCoach</h1>
+    <div id="instructions" class='mb-4'>
+        <p>Page allows you to edit your coach's position</p>
+    </div>
+    
+    <div id="editpositioncoach" class='mb-4 col-md-4 p-1'>
+        <p>Edit existing positioncoach:</p>
+        {{#each data}}
+        <form action="/positioncoach/{{this.positionId}}/{{this.coachId}}?_method=PUT" method="POST">
+        {{/each}}
+            <div class="form-group mb-1">
+                <label for="coachId" class="form-label">Coach Name:</label>
+                <select name="coachId" id="coachId" class="form-select m-2">
+                        {{#each data}}
+                        <option value={{this.coachId}}>{{this.name}}</option>
+                        {{/each}}
+                        {{#each otherCoaches}}
+                        <option value={{this.coachId}}>{{this.name}}</option>
+                        {{/each}}
+                </select>
+            </div>
+            <div class="form-group mb-1">
+                <label for="positionId" class="form-label">Position Name:</label>
+                <select name="positionId" id="positionId" class="form-select m-2">
+                        {{#each data}}
+                        <option value={{this.positionId}}>{{this.positionName}}</option>
+                        {{/each}}
+                        {{#each otherPositions}}
+                        <option value={{this.positionId}}>{{this.positionName}}</option>
+                        {{/each}}
+                </select>
+            </div>
+                <button type="submit" class="btn btn-primary m-4">Submit</button>
+                <a href='/position' role="button" class="btn btn-danger">Cancel Changes</a>
+        </form>
+        
+    </div>

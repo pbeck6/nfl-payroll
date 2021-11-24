@@ -1,9 +1,9 @@
 # NFL Payroll
 
-## - Latest notes
+## - Latest updates
 - CREATE, READ, and DELETE functionality now working
 
-## - How to run
+## - Dev notes
 - When working on FLIP server, need to use nvm to update Node to latest version, or at least v16.5.0.
 
 - app.js needs a db-connector.js file; make a copy of db-template.js, fill in credentials, and rename to db-connector.js. gitignore will ensure credentials are not uploaded to the shared repo on push.

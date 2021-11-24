@@ -110,7 +110,9 @@
                     <td>{{this.positionName}}</td>
                     <td>{{this.positionId}}</td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
+                        <form class='d-inline' action='/positionplayer/edit/{{this.positionId}}/{{this.playerId}}' method='GET'>
+                            <button class="btn btn-warning">Edit</button>
+                        </form>
                         <form class='d-inline' action='/positionplayer/{{this.positionId}}/{{this.playerId}}?_method=DELETE' method='POST'>
                             <button class="btn btn-danger">Delete</button>
                         </form>
@@ -180,7 +182,9 @@
                     <td>{{this.positionName}}</td>
                     <td>{{this.positionId}}</td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
+                        <form class='d-inline' action='/positioncoach/edit/{{this.positionId}}/{{this.coachId}}' method='GET'>
+                            <button class="btn btn-warning">Edit</button>
+                        </form>
                         <form class='d-inline' action='/positioncoach/{{this.positionId}}/{{this.coachId}}?_method=DELETE' method='POST'>
                             <button class="btn btn-danger">Delete</button>
                         </form>
