@@ -1,0 +1,33 @@
+<h1 class='mb-4'>Edit Coach</h1>
+    <div id="instructions" class='mb-4'>
+        <p>Page allows you to edit your coach</p>
+    </div>
+    
+    <div id="editcoach" class='mb-4 col-md-4 p-1'>
+        <p>Edit existing coach:</p>
+        {{#each data}}
+        <form action="/coach/{{this.coachId}}?_method=PUT" method="POST">
+            <div class="form-group mb-1">
+                <label for="coachName" class="form-label">Coach Name:</label>
+                <input type="text" id="coachName" name="coachName" class="form-control" value="{{this.coachName}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="coachType" class="form-label">Coach Type:</label>
+                <input type="text" id="coachType" name="coachType" class="form-control" value="{{this.coachType}}" required>           
+            </div>
+
+            
+
+            <div class="form-group mb-1">
+                <label for="rating" class="form-label">Rating:</label>
+                <input type="number" id="Rating" name="Rating" class="form-control" value="{{this.rating}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="salary" class="form-label">Salary:</label>
+                <input type="number" id="salary" name="salary" class="form-control" value="{{this.salary}}" required>           
+            </div>
+                <button type="submit" class="btn btn-primary m-4">Submit</button>
+                <a href='/coach' role="button" class="btn btn-danger">Cancel Changes</a>
+        </form>
+        {{/each}}
+    </div>
