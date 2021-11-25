@@ -1,0 +1,42 @@
+<h1 class='mb-4'>Edit Player</h1>
+    <div id="instructions" class='mb-4'>
+        <p>Page allows you to edit your player</p>
+    </div>
+    
+    <div id="editplayer" class='mb-4 col-md-4 p-1'>
+        <p>Edit existing player:</p>
+        {{#each data}}
+        <form action="/player/{{this.playerId}}?_method=PUT" method="POST">
+            <div class="form-group mb-1">
+                <label for="name" class="form-label">Player Name:</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{this.name}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="birthdate" class="form-label">Birthdate:</label>
+                <input type="date" id="birthdate" name="birthdate" class="form-control" value="{{this.birthdate}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="debut" class="form-label">Debut:</label>
+                <input type="date" id="debut" name="debut" class="form-control" value="{{this.debut}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="number" class="form-label">Player Number:</label>
+                <input type="number" id="number" name="number" class="form-control" value="{{this.number}}" required>           
+            </div>
+
+
+
+            <div class="form-group mb-1">
+                <label for="rating" class="form-label">Rating:</label>
+                <input type="number" id="rating" name="rating" class="form-control" value="{{this.rating}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="salary" class="form-label">Salary:</label>
+                <input type="text" id="salary" name="salary" class="form-control" value="{{this.salary}}" required>           
+            </div>
+            
+                <button type="submit" class="btn btn-primary m-4">Submit</button>
+                <a href='/player' role="button" class="btn btn-danger">Cancel Changes</a>
+        </form>
+        {{/each}}
+    </div>
