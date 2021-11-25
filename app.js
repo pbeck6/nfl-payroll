@@ -45,6 +45,23 @@ app.get('/player', async function(req, res)
         };
 });
 
+app.get('/player/edit/:playerId', async function(req, res) // Get existing position
+{   let { playerId } = req.params;
+    const inserts = [ playerId, playerId ];
+    const getEditPlayer = 'SELECT player.playerId, player.name, player.birthdate, player.debut, player.number, player.teamId, player.rating, player.salary, team.locationName, team.teamName FROM player LEFT JOIN team ON (SELECT teamId from player WHERE playerId=?)=team.teamId WHERE player.playerId=?';
+    let teamsGet = 'SELECT teamId, locationName, teamName FROM team';
+    try {
+        const data = await pool.query(getEditPlayer, inserts);
+        if (data[0].teamId) {
+            teamsGet += ' WHERE teamId != (SELECT teamId FROM player WHERE playerId=?)';
+        };
+        const teams = await pool.query(teamsGet, inserts[0]);
+        res.render('player/edit', { data, teams });
+    } catch (err) {
+        res.send(err);
+    };
+});
+
 app.post('/player', async function(req, res) // Add new player
     {   // Capture the incoming data and parse it back to a JS object
         let data = req.body;
@@ -65,8 +82,12 @@ app.post('/player', async function(req, res) // Add new player
 app.put('/player/:playerId', async function(req, res) { //Edit player
     let { playerId } = req.params;
     let data = req.body;
+    // Capture NULL values
+    if (data.birthdate.length == 0) { req.body.birthdate = null };
+    if (data.debut.length == 0) { req.body.debut = null };
+    if (data.teamId.length == 0) { req.body.teamId = null };
     const inserts = [ data.name, data.birthdate, data.debut, data.number, data.teamId, data.rating, data.salary, playerId];
-    const editPlayer = 'UPDATE `player` SET name=?, birthdate=?, debut=?, number=?, teamId? rating=?, salary=? WHERE playerId=?';
+    const editPlayer = 'UPDATE `player` SET `name`=?, birthdate=?, debut=?, `number`=?, teamId=?, rating=?, salary=? WHERE playerId=?';
     try {
         await pool.query(editPlayer, inserts);
     } catch (err) {
@@ -415,7 +436,7 @@ app.put('/coach/:coachId', async function(req, res) { // Edit existing coach
     // Capture NULL values
     if (data.teamId.length == 0) {req.body.teamId = null};
     const inserts = [data.name, data.coachType, data.teamId, data.rating, data.salary, coachId];
-    const editCoach = 'UPDATE `coach` SET name=?, coachType=?, teamId=?, rating=?, salary=? WHERE coachId=?';
+    const editCoach = 'UPDATE `coach` SET `name`=?, coachType=?, teamId=?, rating=?, salary=? WHERE coachId=?';
     try {
         await pool.query(editCoach, inserts);
     } catch (err) {

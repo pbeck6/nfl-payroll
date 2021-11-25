@@ -57,7 +57,9 @@
                     <td>{{this.rating}}</td>
                     <td>{{this.salary}}</td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
+                        <form class='d-inline' action='/player/edit/{{this.playerId}}' method='GET'>
+                            <button class="btn btn-warning">Edit</button>
+                        </form>
                         <form class='d-inline' action='/player/{{this.playerId}}?_method=DELETE' method='POST'>
                             <button class="btn btn-danger">Delete</button>
                         </form>
