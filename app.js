@@ -62,6 +62,19 @@ app.post('/player', async function(req, res) // Add new player
         res.redirect('/player');
 });
 
+app.put('/player/:playerId', async function(req, res) { //Edit player
+    let { playerId } = req.params;
+    let data = req.body;
+    const inserts = [ data.name, data.birthdate, data.debut, data.number, data.teamId, data.rating, data.salary, playerId];
+    const editPlayer = 'UPDATE `player` SET name=?, birthdate=?, debut=?, number=?, teamId? rating=?, salary=? WHERE playerId=?';
+    try {
+        await pool.query(editPlayer, inserts);
+    } catch (err) {
+        res.send(err);
+    }
+    res.redirect('/player');
+});
+
 app.delete('/player/:playerId', async function(req, res) // Delete existing player
     {   let { playerId } = req.params;
         const inserts = [playerId];
@@ -107,6 +120,19 @@ app.post('/team', async function(req, res) // Add new team
         };
         res.redirect('/team');
 });
+
+app.put('/team:teamId', async function(req, res) { // Edit existing team
+    let { teamId } = req.params;
+    let data = req.body;
+    const inserts = [data.locationName, data.teamName, data.stadium, data.salaryCap, teamId];
+    const editTeam = 'UPDATE `team` SET locationName=?, teamName=?, stadium=?, salaryCap=? WHERE teamId=?';
+    try {
+        await pool.query(editTeam, inserts);
+    } catch (err) {
+        res.send(err);
+    };
+    res.redirect('/team');
+})
 
 app.delete('/team/:teamId', async function(req, res) // Delete existing team
     {   let { teamId } = req.params;
@@ -349,6 +375,19 @@ app.post('/coach', async function(req,res) { // Add new coach
     } catch (err) {
         res.send(err);
     };
+    res.redirect('/coach');
+});
+
+app.put('/coach/:coachId', async function(req, res) { // Edit existing coach
+    let { coachId } = req.params;
+    let data = req.body;
+    const inserts = [data.name, data.coachType, data.teamId, data.rating, data.salary, coachId];
+    const editCoach = 'UPDATE `coach` SET name=?, coachType=?, teamId=?, rating=?, salary=? WHERE coachId=?';
+    try {
+        await pool.query(editCoach, inserts);
+    } catch (err) {
+        res.send(err);
+    }
     res.redirect('/coach');
 });
 
