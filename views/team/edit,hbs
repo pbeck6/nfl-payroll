@@ -1,0 +1,30 @@
+<h1 class='mb-4'>Edit Team</h1>
+    <div id="instructions" class='mb-4'>
+        <p>Page allows you to edit your team</p>
+    </div>
+    
+    <div id="editteam" class='mb-4 col-md-4 p-1'>
+        <p>Edit existing team:</p>
+        {{#each data}}
+        <form action="/team/{{this.teamId}}?_method=PUT" method="POST">
+            <div class="form-group mb-1">
+                <label for="locationName" class="form-label">Location Name:</label>
+                <input type="text" id="locationName" name="locationName" class="form-control" value="{{this.locationName}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="teamName" class="form-label">Team Name:</label>
+                <input type="text" id="teamName" name="teamName" class="form-control" value="{{this.teamName}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="stadium" class="form-label">Stadium:</label>
+                <input type="text" id="stadium" name="stadium" class="form-control" value="{{this.stadium}}" required>           
+            </div>
+            <div class="form-group mb-1">
+                <label for="salaryCap" class="form-label">Salary Cap:</label>
+                <input type="number" id="salaryCap" name="salaryCap" class="form-control" value="{{this.salaryCap}}" required>           
+            </div>
+                <button type="submit" class="btn btn-primary m-4">Submit</button>
+                <a href='/team' role="button" class="btn btn-danger">Cancel Changes</a>
+        </form>
+        {{/each}}
+    </div>
