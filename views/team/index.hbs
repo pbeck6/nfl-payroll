@@ -48,7 +48,9 @@
                     {{/if}}
                     <td>{{this.salaryCap}}</td>
                     <td>
-                        <button class="btn btn-warning">Edit</button>
+                        <form class='d-inline' action='/team/edit/{{this.teamId}}' method='GET'>
+                            <button class="btn btn-warning">Edit</button>
+                        </form>
                         <form class='d-inline' action='/team/{{this.teamId}}?_method=DELETE' method='POST'>
                             <button class="btn btn-danger">Delete</button>
                         </form>

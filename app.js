@@ -106,6 +106,18 @@ app.get('/team', async function(req, res)
         };
 });
 
+app.get('/team/edit/:teamId', async function(req, res) // Get existing position
+{   let { teamId } = req.params;
+    const inserts = [ teamId ];
+    const getEditTeam = 'SELECT * FROM team WHERE teamId=?';
+    try {
+        let data = await pool.query(getEditTeam, inserts);
+        res.render('team/edit', { data });
+    } catch (err) {
+        res.send(err);
+    };
+});
+
 app.post('/team', async function(req, res) // Add new team
     {   // Capture the incoming data and parse it back to a JS object
         let data = req.body;
@@ -121,9 +133,11 @@ app.post('/team', async function(req, res) // Add new team
         res.redirect('/team');
 });
 
-app.put('/team:teamId', async function(req, res) { // Edit existing team
+app.put('/team/:teamId', async function(req, res) { // Edit existing team
     let { teamId } = req.params;
     let data = req.body;
+    // Capture DEFAULT values
+    if (data.salaryCap.length == 0) { req.body.salaryCap = 10000000 };
     const inserts = [data.locationName, data.teamName, data.stadium, data.salaryCap, teamId];
     const editTeam = 'UPDATE `team` SET locationName=?, teamName=?, stadium=?, salaryCap=? WHERE teamId=?';
     try {
@@ -398,6 +412,7 @@ app.post('/coach', async function(req,res) { // Add new coach
 app.put('/coach/:coachId', async function(req, res) { // Edit existing coach
     const { coachId } = req.params;
     let data = req.body;
+    // Capture NULL values
     if (data.teamId.length == 0) {req.body.teamId = null};
     const inserts = [data.name, data.coachType, data.teamId, data.rating, data.salary, coachId];
     const editCoach = 'UPDATE `coach` SET name=?, coachType=?, teamId=?, rating=?, salary=? WHERE coachId=?';
