@@ -362,7 +362,19 @@ app.get('/coach', async function(req, res)
             res.send(err);
         };
 });
-   
+
+app.get('/coach/edit/:coachId', async function(req, res) // Get existing coach
+{   let { coachId } = req.params;
+    const inserts = [ positionId ];
+    const getEditPosition = 'SELECT * FROM `position` WHERE positionId=?';
+    try {
+        let data = await pool.query(getEditPosition, inserts);
+        res.render('position/edit', { data });
+    } catch (err) {
+        res.send(err);
+    };
+});
+
 app.post('/coach', async function(req,res) { // Add new coach
     // Capture incoming data and parse it back to a JS object
     let data = req.body;
