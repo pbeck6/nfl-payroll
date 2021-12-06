@@ -52,5 +52,5 @@ An NFL Team is limited to 53 players and a salary cap per team per year of $208 
 
 ## - Schema
 
-
+![Schema](https://github.com/stoneroll6/nfl-payroll/blob/master/views/schema.JPG)
 
